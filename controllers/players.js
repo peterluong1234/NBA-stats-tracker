@@ -44,10 +44,9 @@ function searchDataById(input, arr) {
 //     res.render('players/index');
 // }
 
-// function show(req, res) {
-    
-// }
-
+// show currently only displays players who played during 2022 seasons
+// consider changing second request to show "latest season played"
+// look into getting multiple seasons into an array and searching by year
 function show (req, res) {
     let playerProfile = {};
     let playerAvg;
