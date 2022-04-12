@@ -48,10 +48,18 @@ function searchDataById(input, arr) {
     
 // }
 
+function show (req, res) {
+    console.log(req.params.id);
+    res.render(`players/player`);
+    // request(
+    //     `${rootURL}/players/${req.params.id}`
+    // )
+}
+
 
 module.exports = {
     search,
     // index,
-    // show
+    show,
     searchPlayer
 }

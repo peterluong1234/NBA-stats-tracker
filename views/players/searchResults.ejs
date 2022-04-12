@@ -10,7 +10,7 @@
         <tbody>
             <% playerData.forEach(function(r){ %>
             <tr>
-                <td><%= `${r.first_name} ${r.last_name}`%></td>
+                <td><a href="/players/<%= r.id %>"><%= `${r.first_name} ${r.last_name}`%></a></td>
                 <td><%= r.id %></td>
                 <td><%= r.team.full_name %></td>
                 <td><button>FAVORITE</button></td>
