@@ -49,20 +49,41 @@ function searchDataById(input, arr) {
 // }
 
 function show (req, res) {
-
     let playerProfile = {};
+    let playerAvg;
     let playerData;
 
     request(
         `${rootURL}/players/${req.params.id}`, function(err, response, body) {
             playerProfile = JSON.parse(body);
-            console.log(playerProfile);
-            console.log(req.params.id);
-            res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`});
+            // console.log(playerProfile);
+            
+            request(
+                `${rootURL}/season_averages?season2021&player_ids[]=${req.params.id}`, function(err, response, body) {
+                    playerAvg = JSON.parse(body);
+                    playerData = playerAvg.data[0];
+                    // console.log(playerAvg.data);
+                    console.log(playerData);
+                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData });
+                }
+            )
         }
     )
 }
 
+// returns season average of 2021-2022 seasons
+function returnStats(id) {
+
+    let playerData;
+
+    request(
+        `${rootURL}/season_averages?season2021&player_ids[]=${id}`, function(err, response, body) {
+            playerArr = JSON.parse(body);
+            console.log(playerArr.data);
+            return playerArr.data;
+        }
+    )
+}
 
 module.exports = {
     search,
