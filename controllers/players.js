@@ -49,11 +49,18 @@ function searchDataById(input, arr) {
 // }
 
 function show (req, res) {
-    console.log(req.params.id);
-    res.render(`players/player`);
-    // request(
-    //     `${rootURL}/players/${req.params.id}`
-    // )
+
+    let playerProfile = {};
+    let playerData;
+
+    request(
+        `${rootURL}/players/${req.params.id}`, function(err, response, body) {
+            playerProfile = JSON.parse(body);
+            console.log(playerProfile);
+            console.log(req.params.id);
+            res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`});
+        }
+    )
 }
 
 
