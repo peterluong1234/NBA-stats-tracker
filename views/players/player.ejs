@@ -1,5 +1,56 @@
-<%- include('../partials/header') %>
-    <div><%= stats.games_played %></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <nav>
+        <div>NBA STATS</div>
+        <% if (user) { %>
+            <a href="/logout">LOG OUT</a>
+        <% } else { %>
+            <!-- <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>  -->
+            <a href="/auth/google" class="login">LOG IN&nbsp;</a> 
+        <% } %>
+    </nav>
+    <main>
+        <div class="header">
+            <div><h1><%= title %></h1></div>
+            <div><h2><%= profile.position %></h2></div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <td>Gp</td>
+                    <td>Min</td>
+                    <td>Pts</td>
+                    <td>Fg%</td>
+                    <td>3pt%</td>
+                    <td>Reb</td>
+                    <td>Ast</td>
+                    <td>Stl</td>
+                    <td>Blk</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= stats.games_played %></td>
+                    <td><%- parseInt(stats.min) %></td>
+                    <td><%= stats.pts %></td>
+                    <td><%- (stats.fg_pct * 100)%></td>
+                    <td><%- (stats.fg3_pct * 100)%></td>
+                    <td><%= stats.reb %></td>
+                    <td><%= stats.ast %></td>
+                    <td><%= stats.stl %></td>
+                    <td><%= stats.blk %></td>
+                </tr>
+            </tbody>
+        </table>
+
 
 
 <%- include('../partials/footer') %>

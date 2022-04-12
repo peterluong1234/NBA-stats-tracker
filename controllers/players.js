@@ -64,23 +64,9 @@ function show (req, res) {
                     playerData = playerAvg.data[0];
                     // console.log(playerAvg.data);
                     console.log(playerData);
-                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData });
+                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile });
                 }
             )
-        }
-    )
-}
-
-// returns season average of 2021-2022 seasons
-function returnStats(id) {
-
-    let playerData;
-
-    request(
-        `${rootURL}/season_averages?season2021&player_ids[]=${id}`, function(err, response, body) {
-            playerArr = JSON.parse(body);
-            console.log(playerArr.data);
-            return playerArr.data;
         }
     )
 }
