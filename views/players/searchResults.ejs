@@ -14,7 +14,7 @@
                 <td><%= r.id %></td>
                 <td><%= r.team.full_name %></td>
                 <td>
-                    <form action="/users/<%= r.id %> method="POST">
+                    <form action="/users/<%= r.id %>/players" method="POST">
                         <button>FAVORITE</button>
                     </form>
                 </td>
