@@ -12,13 +12,19 @@ function index(req, res) {
 }
 
 function addToFavorites(req, res) {
-    console.log(req.params.id);
+    // console.log(req.params.id);
+    
     
     Player.find( {id: req.params.id} , function(err, player) {
         if(err){
             console.log('not found');
         } else if (player.length === 0 ) {
+            // steps for this if statement:
+            // 1. create player in DB
+            // 2. add player to favorites
             let created = false;
+            // this 'request' searches for the player
+            
             request(
                 `${rootURL}/players/${req.params.id}`, function(err, response, body) {
                     let playerProfile = JSON.parse(body);
@@ -26,28 +32,30 @@ function addToFavorites(req, res) {
                         firstName: playerProfile.first_name,
                         lastName: playerProfile.last_name,
                         id: playerProfile.id
-                    }
-                    
-            Player.create(playerData, function(err) {
-                console.log("created");
-                created = true;
-            })
-
-            // fix issue with adding player to user right after creating player
-            if (created == true) {
-                User.findById(req.user._id, function(err, theUser) {
-                    // console.log(player)
-                    let play = player.find(play => play.id == req.params.id);
-                        console.log(play)
-                        // need to access play._id
-                    theUser.favoritePlayer.push(play._id);
-                    theUser.save(function(err) {
-                        console.log("saved");
-                    })
+                    }    
+                // player.create creates the player in DB
+                Player.create(playerData, function(err) {
+                console.log("1");
                 })
-            }
-        })
-
+                created = true;
+                console.log('2')
+            })
+            console.log('3');
+        
+            // this if statement adds player to user favorites
+            // NOTE: This runs first!
+        if (created == true) {
+            User.findById(req.user._id, function(err, theUser) {
+                // console.log(player)
+                let play = player.find(play => play.id == req.params.id);
+                    console.log(play)
+                    // need to access play._id
+                theUser.favoritePlayer.push(play._id);
+                theUser.save(function(err) {
+                    console.log("saved");
+                })
+            })
+        }
         } else {
             let found;
     

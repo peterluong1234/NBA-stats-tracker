@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const rootURL = 'https://www.balldontlie.io/api/v1'
+
 
 const userSchema = new mongoose.Schema({
 	name: String,
