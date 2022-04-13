@@ -13,7 +13,7 @@ function index(req, res) {
 
 function addToFavorites(req, res) {
     // console.log(req.params.id);
-    
+    let found;
     
     Player.find( {id: req.params.id} , function(err, player) {
         if(err){
@@ -22,9 +22,8 @@ function addToFavorites(req, res) {
             // steps for this if statement:
             // 1. create player in DB
             // 2. add player to favorites
-            let created = false;
+
             // this 'request' searches for the player
-            
             request(
                 `${rootURL}/players/${req.params.id}`, function(err, response, body) {
                     let playerProfile = JSON.parse(body);
@@ -34,29 +33,45 @@ function addToFavorites(req, res) {
                         id: playerProfile.id
                     }    
                 // player.create creates the player in DB
-                Player.create(playerData, function(err) {
-                console.log("1");
-                })
-                created = true;
-                console.log('2')
+                    const p = new Promise(function(resolve, reject) {
+                        Player.create(playerData, function(err) {
+                        // console.log("1");
+                        })
+                    })
+                        p.then(User.findById(req.user._id, function(err, theUser) {
+                                    // console.log(player)
+                                    let play = player.find(play => play.id == req.params.id);
+                                        console.log(play)
+                                        // need to access play._id
+                                    theUser.favoritePlayer.push(play._id);
+                                    theUser.save(function(err) {
+                                        console.log("saved");
+                                    })
+                                })
+                            )
+                        
+
+                // console.log('2')
             })
-            console.log('3');
+        
+            // console.log('3');
         
             // this if statement adds player to user favorites
             // NOTE: This runs first!
-        if (created == true) {
-            User.findById(req.user._id, function(err, theUser) {
-                // console.log(player)
-                let play = player.find(play => play.id == req.params.id);
-                    console.log(play)
-                    // need to access play._id
-                theUser.favoritePlayer.push(play._id);
-                theUser.save(function(err) {
-                    console.log("saved");
-                })
-            })
-        }
-        } else {
+        // if (created == true) {
+        //     User.findById(req.user._id, function(err, theUser) {
+        //         // console.log(player)
+        //         let play = player.find(play => play.id == req.params.id);
+        //             console.log(play)
+        //             // need to access play._id
+        //         theUser.favoritePlayer.push(play._id);
+        //         theUser.save(function(err) {
+        //             console.log("saved");
+            //     })
+            // })
+        // }
+        } 
+        else {
             let found;
     
             for(let i = 0; i < req.user.favoritePlayer.length; i++) {
@@ -78,31 +93,19 @@ function addToFavorites(req, res) {
         }
     })
 
-
-    // request(
-    //     `${rootURL}/players/${req.params.id}`, function(err, response, body) {
-    //         let playerProfile = JSON.parse(body);
-    //         console.log(playerProfile);
-
-
-    //         // console.log(req.user);
-    //         // let playerData = {
-    //         //     firstName: playerProfile.first_name,
-    //         //     lastName: playerProfile.last_name,
-    //         //     id: playerProfile.id
-    //         // }
-    //         // Player.create(playerData, function(err, player) {
-    //         //     console.log("created");
-    //         // })
-    //         // Player.findById(playerProfile.id, function())
-    //         // User.findById(req.user._id, function(err, theUser) {
-    //         //     theUser.favoritePlayer.push(playerData);
-    //         //     theUser.save(function(err) {
-    //         //         console.log("saved");
-    //         //     })
-    //         // })
-    //     }
-    // )
+    Player.find( {id: req.params.id} , function(err, player) {
+        console.log('1')
+        // if (found != true) {
+        //     console.log('not found');
+        //     User.findById(req.user._id, function(err, theUser) {
+        //         let play = player.find(play => play.id == req.params.id);
+        //         theUser.favoritePlayer.push(play._id);
+        //         theUser.save(function(err) {
+        //             console.log("saved");
+        //         })
+        //     })
+        // }
+    })
 }
 
 
