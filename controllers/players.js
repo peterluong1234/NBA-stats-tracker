@@ -79,8 +79,12 @@ function addToFavorites(req, res) {
                     playerData = {
                         firstName: playerProfile.first_name,
                         lastName: playerProfile.last_name,
-                        id: playerProfile.id                        
+                        id: playerProfile.id,
+                        team: playerProfile.team.name,
+                        city: playerProfile.team.city,
+                        position: playerProfile.position                        
                     }    
+
                 // player.create creates the player in DB
                     await Player.create(playerData, function(err, createdPlayer) {
                         // console.log(`player data: ${playerData}`,);

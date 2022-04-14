@@ -7,7 +7,10 @@ const playerSchema = new mongoose.Schema({
     usersFavorited: [],
 	firstName: String,
     lastName: String,
-    id: Number
+    id: Number,
+    team: String,
+    city: String,
+    position: String
   });
 
 module.exports = mongoose.model('Player', playerSchema);
