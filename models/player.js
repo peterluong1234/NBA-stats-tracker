@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const playerSchema = new mongoose.Schema({
+    usersFavorited: String,
 	firstName: String,
     lastName: String,
     id: Number

@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
 	  required: true
 	},
 	email: String,
-    favoritePlayer: [{type: Schema.Types.ObjectId, ref: 'Player'}]
   }, 
     {
 	timestamps: true
