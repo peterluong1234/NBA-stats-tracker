@@ -9,6 +9,7 @@ const playersCtrl = require('../controllers/players');
 router.get('/search', playersCtrl.search);
 router.post('/search/player', playersCtrl.searchPlayer);
 router.get('/:id', playersCtrl.show)
+router.post('/:id', playersCtrl.addToFavorites);
 
 
 module.exports = router;

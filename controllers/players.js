@@ -2,6 +2,7 @@ const User = require("../models/user");
 const Player = require("../models/player")
 const request = require("request");
 const player = require("../models/player");
+const { find } = require("../models/user");
 const rootURL = 'https://www.balldontlie.io/api/v1'
 
 function search(req, res) {
@@ -57,9 +58,71 @@ function show (req, res) {
     )
 }
 
+function addToFavorites(req, res) {
+    console.log(req.params.id);
+    let found;
+    let playerId = parseInt(req.params.id);
+    Player.find( {id: req.params.id} , async function(err, player) {
+        console.log(`line18 Player: ${player}`)
+        let playerData = {};
+        if(err){
+            console.log('not found');
+        } else if (player.length === 0 ) {
+            // steps for this if statement:
+            // 1. create player in DB
+            // 2. add player to favorites
+
+            // this 'request' searches for the player
+            await request(
+                `${rootURL}/players/${req.params.id}`, async function(err, response, body) {
+                    let playerProfile = JSON.parse(body);
+                    playerData = {
+                        userFavorites: [],
+                        firstName: playerProfile.first_name,
+                        lastName: playerProfile.last_name,
+                        id: playerProfile.id                        
+                    }    
+                // player.create creates the player in DB
+                    await Player.create(playerData, function(err, createdPlayer) {
+                        // console.log(`player data: ${playerData}`,);
+                        console.log(`createdPlayer: ${createdPlayer}`)
+                        })
+                    
+                    await Player.find({ id: req.params.id }, function(err, foundPlayer) {
+                        console.log(`foundPlayer: ${foundPlayer}`)
+                    foundPlayer.usersFavorited.push(req.user._id);
+                        foundPlayer.save(function(err) {
+                            console.log("saved");
+                    }) 
+                    })
+        })
+
+        } else { 
+            // looks for player in DB, if found, skip
+            for(let i = 0; i < req.user.favoritePlayer.length; i++) {
+                if (parseInt(req.user.favoritePlayer[i]) == parseInt(player[0]._id)) {
+                    found = true;
+                    console.log('player already added');
+                }
+            }
+            
+            if (found != true) {
+                console.log('not found');
+                User.findById(req.user._id, function(err, theUser) {
+                    let play = player.find(play => play.id == req.params.id);
+                    theUser.favoritePlayer.push(play._id);
+                    theUser.save(function(err) {
+                        console.log("saved");
+                    })
+                })
+            }
+        } 
+    })
+}
 module.exports = {
     search,
     // index,
     show,
-    searchPlayer
+    searchPlayer,
+    addToFavorites
 }
