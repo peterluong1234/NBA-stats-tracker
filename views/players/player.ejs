@@ -42,10 +42,10 @@
             <tbody>
                 <tr>
                     <td><%= stats.games_played %></td>
-                    <td><%- parseInt(stats.min) %></td>
+                    <td><%- parseFloat(stats.min).toFixed(2) %></td>
                     <td><%= stats.pts %></td>
-                    <td><%- (stats.fg_pct * 100)%></td>
-                    <td><%- (stats.fg3_pct * 100)%></td>
+                    <td><%- parseFloat(stats.fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(stats.fg3_pct * 100).toFixed(2) %></td>
                     <td><%= stats.reb %></td>
                     <td><%= stats.ast %></td>
                     <td><%= stats.stl %></td>

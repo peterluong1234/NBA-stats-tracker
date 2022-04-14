@@ -4,17 +4,20 @@
             <div><h1><%= title %></h1></div>
             
             <table>
-                <% foundPlayers.forEach(function(p) { %>
+
                 <thead>
                     <tr>
                         <td>Name:</td>
-                        <td>id: </td>
+                        <td>Team:</td>
+                        <td>Pos:</td>
                     </tr>
-                </thead>
+                </thead
+                    <% foundPlayers.forEach(function(p) { %>
                 <tbody>
                     <tr>
                         <td><a href="/players/<%= p.id %>"><%= `${p.firstName} ${p.lastName}`%></td>
-                        <td><%= p.id %></td>
+                        <td><%= `${p.city} ${p.team}`%></td>
+                        <td><%= p.position %></td>
                     </tr>
                 </tbody>
             <% }) %>

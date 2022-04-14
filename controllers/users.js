@@ -14,7 +14,6 @@ async function index(req, res) {
     await res.render('users/index', { title: `favorite players`, foundPlayers: foundPlayers});
 }
 
-
 module.exports = {
     index,
     // addToFavorites

@@ -116,10 +116,15 @@ function addToFavorites(req, res) {
         } 
     })
 }
+
+function deletePlayer(req, res) {
+    
+}
 module.exports = {
     search,
     // index,
     show,
     searchPlayer,
-    addToFavorites
+    addToFavorites,
+    delete: deletePlayer
 }
