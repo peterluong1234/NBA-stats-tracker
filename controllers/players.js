@@ -118,7 +118,12 @@ function addToFavorites(req, res) {
 }
 
 function deletePlayer(req, res) {
-    
+    // find player in database
+    // remove user id from player
+    Player.find( {id: req.params.id}, function(err, foundPlayer) {
+        console.log(foundPlayer);
+    })
+
 }
 module.exports = {
     search,

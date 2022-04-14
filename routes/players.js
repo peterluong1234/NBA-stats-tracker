@@ -10,6 +10,7 @@ router.get('/search', playersCtrl.search);
 router.post('/search/player', playersCtrl.searchPlayer);
 router.get('/:id', playersCtrl.show)
 router.post('/:id', playersCtrl.addToFavorites);
+router.delete('/:id', playersCtrl.delete);
 
 
 module.exports = router;
