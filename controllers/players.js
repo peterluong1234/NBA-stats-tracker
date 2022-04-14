@@ -63,7 +63,7 @@ function addToFavorites(req, res) {
     let found;
     let playerId = parseInt(req.params.id);
     Player.find( {id: req.params.id} , async function(err, player) {
-        console.log(`line18 Player: ${player}`)
+        // console.log(`line18 Player: ${player}`)
         let playerData = {};
         if(err){
             console.log('not found');
@@ -91,23 +91,22 @@ function addToFavorites(req, res) {
         })
 
         } else { 
-            // looks for player in DB, if found, skip
-            
-            for(let i = 0; i < req.user.favoritePlayer.length; i++) {
-                if (parseInt(req.user.favoritePlayer[i]) == parseInt(player[0]._id)) {
-                    found = true;
-                    console.log('player already added');
-                }
-            }
-            
+            // looks for player in DB, if user is already added to player.userFavorites, skip
+            await Player.find({ id: req.params.id}, function(err, foundPlayer) {
+                 console.log(foundPlayer[0].usersFavorited);
+                 for(let i = 0; i < foundPlayer[0].usersFavorited.length; i++) {
+                     if(parseInt(req.user._id) == parseInt(foundPlayer[0].usersFavorited[i])){
+                         found = true;
+                         console.log('player already added');
+                     }
+                 }
+            });
+
             if (found != true) {
                 console.log('not found');
-                User.findById(req.user._id, function(err, theUser) {
-                    let play = player.find(play => play.id == req.params.id);
-                    theUser.favoritePlayer.push(play._id);
-                    theUser.save(function(err) {
-                        console.log("saved");
-                    })
+                Player.find({ id: req.params.id}, function(err, foundPlayer) {
+                    foundPlayer[0].usersFavorited.push(req.user._id);
+                    foundPlayer[0].save();  
                 })
             }
         } 
