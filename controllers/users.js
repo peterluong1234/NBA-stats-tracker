@@ -7,9 +7,46 @@ const rootURL = 'https://www.balldontlie.io/api/v1'
 
 
 function index(req, res) {
-    console.log(req.user.favoritePlayer);
-    
     // I want to display the user's favorite players
+    // copy favorite player into an arr
+    let favoritesArr = [...req.user.favoritePlayer]
+    console.log(favoritesArr)
+    
+    // Player.findById(req.user.favoritePlayer)
+    // .populate('')
+
+    // console.log(favoritesArr);
+    let favoritesArr2 = [];
+    // loop through array for each element
+    // pull player objectID and place player ID into second array
+
+    // in second array, find player stats using express and push into an object array
+
+    //     const promise = new Promise((resolve, reject) => {
+    //         favoritesArr.forEach(element => {
+    //             Player.findById(element, function(err, playerInfo) {
+    //                 favoritesArr2.push(playerInfo.id);
+    //              })
+    //          })
+    //          resolve();
+    //     })
+    
+
+    // promise
+    // .then(console.log(favoritesArr2));
+
+    
+    // await favoritesArr2.forEach(element => {
+    //     request(
+    //     `${rootURL}/season_averages?season2021&player_ids[]=${element}`, function(err, response, body) {
+    //         let playerAvg = JSON.parse(body);
+    //         playerData.push(playerAvg.data[0]);
+    //         // console.log(playerAvg.data);
+    //         console.log(playerData);
+    //         // res.render(`players/player`, { Name: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile });
+    //         }
+    //     )
+    // })
 
 
     res.render('users/index', { title: `favorite players` });
