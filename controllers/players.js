@@ -77,7 +77,6 @@ function addToFavorites(req, res) {
                 `${rootURL}/players/${req.params.id}`, async function(err, response, body) {
                     let playerProfile = JSON.parse(body);
                     playerData = {
-                        userFavorites: [],
                         firstName: playerProfile.first_name,
                         lastName: playerProfile.last_name,
                         id: playerProfile.id                        
@@ -85,20 +84,15 @@ function addToFavorites(req, res) {
                 // player.create creates the player in DB
                     await Player.create(playerData, function(err, createdPlayer) {
                         // console.log(`player data: ${playerData}`,);
-                        console.log(`createdPlayer: ${createdPlayer}`)
+                        console.log(`createdPlayer: ${createdPlayer.usersFavorited}`)
+                        createdPlayer.usersFavorited.push(req.user._id);
+                        createdPlayer.save();
                         })
-                    
-                    await Player.find({ id: req.params.id }, function(err, foundPlayer) {
-                        console.log(`foundPlayer: ${foundPlayer}`)
-                    foundPlayer.usersFavorited.push(req.user._id);
-                        foundPlayer.save(function(err) {
-                            console.log("saved");
-                    }) 
-                    })
         })
 
         } else { 
             // looks for player in DB, if found, skip
+            
             for(let i = 0; i < req.user.favoritePlayer.length; i++) {
                 if (parseInt(req.user.favoritePlayer[i]) == parseInt(player[0]._id)) {
                     found = true;
