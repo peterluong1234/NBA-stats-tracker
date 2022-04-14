@@ -24,22 +24,9 @@ function searchPlayer(req, res) {
             res.render('players/searchResults', { title: "Search Results", /*playerName: playerData[0].firstName , */ playerData: playerData  });
         }
     )
-    // console.log(playerData[0].first_name);
-    // console.log(req.body);
-    
-    // res.render('players/searchResults', { title: "Search Results", /*playerName: playerData[0].firstName , playerData: playerData*/  });
-    // create function to break down req.body
-
-    // res.render('players/searchplayer', { title: "Search" });
 }
 
-function searchDataById(input, arr) {
-    for(let i = 0; i < arr.length; i++) {
-        if(arr[i].id === id) {
-            return arr[i];
-        }
-    }
-}
+
 // function index(req, res) {
 //     res.render('players/index');
 // }

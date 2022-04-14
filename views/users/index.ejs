@@ -1,5 +1,41 @@
 <%- include('../partials/header') %>
-    
+
+        <div class="header">
+            <div><h1><%= title %></h1></div>
+            <div><h2><%= profile.position %></h2></div>
+        </div>
+        <div>
+            <div><%= profile.team.full_name %></div></br>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <td>Gp</td>
+                    <td>Min</td>
+                    <td>Pts</td>
+                    <td>Fg%</td>
+                    <td>3pt%</td>
+                    <td>Reb</td>
+                    <td>Ast</td>
+                    <td>Stl</td>
+                    <td>Blk</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= stats.games_played %></td>
+                    <td><%- parseInt(stats.min) %></td>
+                    <td><%= stats.pts %></td>
+                    <td><%- (stats.fg_pct * 100)%></td>
+                    <td><%- (stats.fg3_pct * 100)%></td>
+                    <td><%= stats.reb %></td>
+                    <td><%= stats.ast %></td>
+                    <td><%= stats.stl %></td>
+                    <td><%= stats.blk %></td>
+                </tr>
+            </tbody>
+        </table>
 
 
 <%- include('../partials/footer') %>
