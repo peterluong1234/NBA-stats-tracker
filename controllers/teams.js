@@ -33,16 +33,42 @@ const rootURL = 'https://www.balldontlie.io/api/v1'
 // show currently only displays players who played during 2022 seasons
 // consider changing second request to show "latest season played"
 // look into getting multiple seasons into an array and searching by year
+function show (req, res) {
+    console.log(req.body);
+    // res.render('teams/team')
+}
 
 function index (req, res) {
     let teams = {};
-    request(
-        `${rootURL}/teams`, function(err, response, body) {
-            teams = JSON.parse(body);
-            console.log(teams);
-            // res.render('teams')
-        }
-    )
+    
+    // request(
+    //     `${rootURL}/teams`, async function(err, response, body) {
+    //         teams = JSON.parse(body);
+    //         teamsArr = teams.data;
+    //         teamsArr.forEach(element => {
+    //             let teamData = {   
+    //                 id: element.id,
+    //                 abbreviation: element.abbreviation,
+    //                 city: element.city,
+    //                 name: element.name,
+    //                 fullName: element.full_name,
+    //                 conference: element.conference,
+    //                 division: element.division                  
+    //             }    
+    //             console.log(`${teamData} <-- Team data`)
+    //         // player.create creates the player in DB
+    //             Team.create(teamData, function(err, createdTeam) {
+    //                 // console.log(`player data: ${playerData}`,);
+    //                 // console.log(`createdPlayer: ${createdPlayer.usersFavorited}`)
+    //                 createdTeam.usersFavorited.push(req.user._id);
+    //                 createdTeam.save();
+    //                 })
+    //             // console.log(element);
+    //         })
+            // console.log(teams);
+            res.render('teams')
+        // })
+        // })
 }
 
 // function addToFavorites(req, res) {
@@ -119,8 +145,8 @@ function index (req, res) {
 // }
 module.exports = {
     // search,
-    index
-    // show,
+    index,
+    show,
     // searchPlayer,
     // addToFavorites,
     // delete: deletePlayer

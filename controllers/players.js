@@ -126,10 +126,11 @@ async function deletePlayer(req, res) {
             return console.log("There was an error");
         }
     })
-    
+
     await res.redirect('/users/');
 
 }
+
 module.exports = {
     search,
     // index,
