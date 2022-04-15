@@ -1,6 +1,123 @@
 <%- include('./partials/header') %>
     <body>
-        <a>Hello World</a>
-        <div></div>
+        
+        
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Pts</td>
+                    <td>Fg%</td>
+                    <td>3pt%</td>
+                    <td>Reb</td>
+                    <td>Ast</td>
+                    <td>Stl</td>
+                    <td>Blk</td>
+                </tr>
+            </thead>
+            <tbody>                
+                <tr>
+                    <td><%= topPlayer[0] %></td>
+                    <td><%= playerData[0].pts %></td>
+                    <td><%- parseFloat(playerData[0].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[0].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[0].reb %></td>
+                    <td><%= playerData[0].ast %></td>
+                    <td><%= playerData[0].stl %></td>
+                    <td><%= playerData[0].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[1] %></td>
+                    <td><%= playerData[1].pts %></td>
+                    <td><%- parseFloat(playerData[1].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[1].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[1].reb %></td>
+                    <td><%= playerData[1].ast %></td>
+                    <td><%= playerData[1].stl %></td>
+                    <td><%= playerData[1].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[2] %></td>
+                    <td><%= playerData[2].pts %></td>
+                    <td><%- parseFloat(playerData[2].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[2].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[2].reb %></td>
+                    <td><%= playerData[2].ast %></td>
+                    <td><%= playerData[2].stl %></td>
+                    <td><%= playerData[2].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[3] %></td>
+                    <td><%= playerData[3].pts %></td>
+                    <td><%- parseFloat(playerData[3].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[3].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[3].reb %></td>
+                    <td><%= playerData[3].ast %></td>
+                    <td><%= playerData[3].stl %></td>
+                    <td><%= playerData[3].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[4] %></td>
+                    <td><%= playerData[4].pts %></td>
+                    <td><%- parseFloat(playerData[4].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[4].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[4].reb %></td>
+                    <td><%= playerData[4].ast %></td>
+                    <td><%= playerData[4].stl %></td>
+                    <td><%= playerData[4].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[5] %></td>
+                    <td><%= playerData[5].pts %></td>
+                    <td><%- parseFloat(playerData[5].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[5].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[5].reb %></td>
+                    <td><%= playerData[5].ast %></td>
+                    <td><%= playerData[5].stl %></td>
+                    <td><%= playerData[5].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[6] %></td>
+                    <td><%= playerData[6].pts %></td>
+                    <td><%- parseFloat(playerData[6].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[6].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[6].reb %></td>
+                    <td><%= playerData[6].ast %></td>
+                    <td><%= playerData[6].stl %></td>
+                    <td><%= playerData[6].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[7] %></td>
+                    <td><%= playerData[7].pts %></td>
+                    <td><%- parseFloat(playerData[7].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[7].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[7].reb %></td>
+                    <td><%= playerData[7].ast %></td>
+                    <td><%= playerData[7].stl %></td>
+                    <td><%= playerData[7].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[8] %></td>
+                    <td><%= playerData[8].pts %></td>
+                    <td><%- parseFloat(playerData[8].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[8].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[8].reb %></td>
+                    <td><%= playerData[8].ast %></td>
+                    <td><%= playerData[8].stl %></td>
+                    <td><%= playerData[8].blk %></td>
+                </tr>
+                <tr>
+                    <td><%= topPlayer[9] %></td>
+                    <td><%= playerData[9].pts %></td>
+                    <td><%- parseFloat(playerData[9].fg_pct * 100).toFixed(2) %></td>
+                    <td><%- parseFloat(playerData[9].fg3_pct * 100).toFixed(2) %></td>
+                    <td><%= playerData[9].reb %></td>
+                    <td><%= playerData[9].ast %></td>
+                    <td><%= playerData[9].stl %></td>
+                    <td><%= playerData[9].blk %></td>
+                </tr>
+            </tbody>
+        </table>
 
 <%- include('./partials/footer') %>

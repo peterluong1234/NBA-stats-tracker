@@ -1,8 +1,6 @@
 const User = require("../models/user");
 const Player = require("../models/player")
 const request = require("request");
-const player = require("../models/player");
-const { find } = require("../models/user");
 const rootURL = 'https://www.balldontlie.io/api/v1'
 
 function search(req, res) {
