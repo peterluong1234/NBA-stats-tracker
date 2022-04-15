@@ -22,14 +22,23 @@
             } -->
             <% if (games[i].home_team.id == team.id) { if (games[i].home_team_score > games[i].visitor_team_score) { %>
                     <td>Win</td>
-                    <td><%= games[i].visitor_team.full_name%></td>
+                    <td><a href='/teams/<%= games[i].visitor_team.id %>'><%= games[i].visitor_team.full_name%></a></td>
                     <td><%= games[i].home_team_score%></td>
                     <td><%= games[i].visitor_team_score%></td>
-                <% } else if (games[i].home_team_score < games[i].visitor_team_score){ %> <td>Loss</td> <td><%= games[i].visitor_team.full_name%></td><td><%= games[i].home_team_score%></td>
-                    <td><%= games[i].visitor_team_score%></td><% } %>
-                <% } else { if (games[i].visitor_team_score > games[i].home_team_score) { %> <td>Win</td><td><%= games[i].home_team.full_name%></td><td><%= games[i].visitor_team_score%></td>
+                <% } else if (games[i].home_team_score < games[i].visitor_team_score){ %> 
+                    <td>Loss</td>
+                    <td ><a href='/teams/<%= games[i].visitor_team.id %>'><%= games[i].visitor_team.full_name%></a></td>
                     <td><%= games[i].home_team_score%></td>
-                    <% } else if (games[i].visitor_team_score < games[i].home_team_score){ %> <td>Loss</td><td><%= games[i].home_team.full_name%></td><td><%= games[i].visitor_team_score%></td>
+                    <td><%= games[i].visitor_team_score%></td><% } %>
+                <% } else { if (games[i].visitor_team_score > games[i].home_team_score) { %> 
+                    <td>Win</td>
+                    <td><a href='/teams/<%= games[i].home_team.id %>'><%= games[i].home_team.full_name%></td>
+                    <td><%= games[i].visitor_team_score%></td>
+                    <td><%= games[i].home_team_score%></td>
+                    <% } else if (games[i].visitor_team_score < games[i].home_team_score){ %> 
+                        <td>Loss</td>
+                        <td><a href='/teams/<%= games[i].home_team.id %>'><%= games[i].home_team.full_name%></a></td>
+                        <td><%= games[i].visitor_team_score%></td>
                         <td><%= games[i].home_team_score%></td> <% } %>
                 <% }  %> 
             </tr>

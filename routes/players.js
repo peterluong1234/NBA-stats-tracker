@@ -7,8 +7,8 @@ const playersCtrl = require('../controllers/players');
 
 // router.get('/', playersCtrl.index);
 router.get('/search', playersCtrl.search);
-router.post('/search/player', playersCtrl.searchPlayer);
 router.get('/:id', playersCtrl.show)
+router.post('/search/player', playersCtrl.searchPlayer);
 router.post('/:id', playersCtrl.addToFavorites);
 router.delete('/:id', playersCtrl.delete);
 

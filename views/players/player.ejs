@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+</br>
 <div class="container-md d-flex justify-content-center">
     <div>
             <div><h1><%= title %></h1></div>
@@ -7,7 +7,7 @@
             <div><%= profile.team.full_name %></div></br>
             <div><% if (user) { %>
                 <form action="/players/<%= profile.id %>" method="POST">
-                    <button>FAVORITE</button>
+                    <button type="button" class="btn btn-outline-danger">FAVORITE</button>
                 </form>
             <% } %></div>
         
