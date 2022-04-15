@@ -117,12 +117,17 @@ function addToFavorites(req, res) {
     })
 }
 
-function deletePlayer(req, res) {
+async function deletePlayer(req, res) {
     // find player in database
     // remove user id from player
-    Player.find( {id: req.params.id}, function(err, foundPlayer) {
-        console.log(foundPlayer);
+
+    await Player.findOneAndUpdate({ id: req.params.id }, {$pull: {usersFavorited: req.user._id}}, (err, data) => {
+        if (err) {
+            return console.log("There was an error");
+        }
     })
+    
+    await res.redirect('/users/');
 
 }
 module.exports = {
