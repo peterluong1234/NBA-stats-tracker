@@ -18,7 +18,7 @@ function index (req, res) {
 }
 
 function addToFavorites(req, res) {
-    // console.log(req.params.id);
+    console.log(req.params.id);
     // let found;
     // let playerId = parseInt(req.params.id);
     // Player.find( {id: req.params.id} , async function(err, player) {
