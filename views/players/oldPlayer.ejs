@@ -1,40 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-<body>
-    <nav>
-        <div>NBA STATS</div>
-        <div><a href="/">HOME</a></div>
-            <div><a href="/players/search">PLAYERS</a></div>
-            <div><a href="/users">USER</a></div>
-            <div><a href="/teams">TEAMS</a></div>
-        </div>
-        <% if (user) { %>
-            <a href="/logout">LOG OUT</a>
-        <% } else { %>
-            <!-- <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>  -->
-            <a href="/auth/google" class="login">LOG IN&nbsp;</a> 
-        <% } %>
-    </nav>
-    <main>
-        <div class="header">
+<%- include('../partials/header') %>
+</br>
+<div class="container-md d-flex justify-content-center">
+    <div>
             <div><h1><%= title %></h1></div>
-            <% if (user) { %>
-                <div></div><form action="/players/<%= profile.id %>" method="POST">
-                    <button>FAVORITE</button>
-                </form></div>
-            <% } %>
             <div><h2><%= profile.position %></h2></div>
-        </div>
-        <div>
             <div><%= profile.team.full_name %></div></br>
-        </div>
-        <p>No stats on players not playing in 2021-2022 season.</p>
-
+            <% if (user) { %>
+                <form action="/players/<%= profile.id %>" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %>
+            </br>
+            <div><p>No stats on players not playing in 2021-2022 season.</p></div>
+    </div>
+            
+</div>
 
 <%- include('../partials/footer') %>

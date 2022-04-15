@@ -27,7 +27,7 @@ router.get('/', function(req, res) {
         'Stephen Curry'
       ]
       let playerData = JSON.parse(body);
-      console.log(playerData.data);
+      // console.log(playerData.data);
       let playerDataSorted = playerData.data.sort((a,b) => b.pts - a.pts);
       res.render('index', {playerData: playerDataSorted, topPlayer: topPlayers});
       

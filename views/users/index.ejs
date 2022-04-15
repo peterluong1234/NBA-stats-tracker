@@ -1,13 +1,16 @@
 <%- include('../partials/header') %>
+</br>
+<div class="container-sm d-flex justify-content-center">
 
-        <div class="header">
-            <table>
-                <div><h3><%= title %></h3></div>
+    <div class="container">
+        <div><h3 class="fw-bold"><%= title %></h3></div>
+            <table class="table table-borderless">
+                
                 <thead>
                     <tr>
-                        <td>Name:</td>
-                        <td>Team:</td>
-                        <td>Pos:</td>
+                        <td class="fw-bold">NAME</td>
+                        <td class="fw-bold">TEAM</td>
+                        <td class="fw-bold">POS</td>
                         <td></td>
                     </tr>
                 </thead
@@ -18,21 +21,23 @@
                         <td><%= `${p.city} ${p.team}`%></td>
                         <td><%= p.position %></td>
                         <td><form action="/players/<%= p.id %>?_method=DELETE" method="POST">
-                            <button>X</button>
+                            <button type="button" class="btn btn-outline-danger">X</button>
                         </form></td>
                     </tr>
                 </tbody>
             <% }) %>
             </table>
+        </div>
 
-            
-            <table>
-                <div><h3><%= title2 %></h3></div>
+        <div class="container">
+            <div><h3 class="fw-bold"><%= title2 %></h3></div>
+            <table class="table table-borderless">
+   
                 <thead>
                     <tr>
-                        <td>Name:</td>
-                        <td>City:</td>
-                        <td>Conference:</td>                        
+                        <td class="fw-bold">NAME</td>
+                        <td class="fw-bold">CITY</td>
+                        <td class="fw-bold">CONFERENCE</td>                        
                         <td></td>
                     </tr>
                 </thead
@@ -45,10 +50,12 @@
                         
 
                         <td><form action="/teams/<%= f.id %>?_method=DELETE" method="POST">
-                            <button>X</button>
+                            <button type="button" class="btn btn-outline-danger">X</button>
                         </form></td>
                     </tr>
                 </tbody>
             <% }) %>
             </table>
+        </div>
+    </div>
 <%- include('../partials/footer') %>

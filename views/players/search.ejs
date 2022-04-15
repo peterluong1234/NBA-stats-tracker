@@ -1,8 +1,16 @@
 <%- include('../partials/header') %>
-<form id="search-form" action="/players/search/player" method="POST">
-    <label>NBA Player Search</label>
-    <input type="text" name="name">
-    <input type="submit" value="Search Player">
-</form>
-
+</br>
+<div class=" d-flex justify-content-center">
+<div class="column">
+    <div class="col align-self-center">
+        <div class="fw-bold fs-2 row">NBA PLAYER SEARCH</div>
+</br>
+        <div class="row"><form id="search-form" action="/players/search/player" method="POST">
+         <input type="text" name="name">
+         <input type="submit" value="Search Player">
+        </form>
+    </div>
+    </div>
+    </div>
+</div>
 <%- include('../partials/footer') %>

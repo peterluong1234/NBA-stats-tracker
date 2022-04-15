@@ -7,9 +7,17 @@ function show (req, res) {
     console.log(req.params.id);
     request (`${rootURL}/teams/${req.params.id}`, async function(err, response, body) {
                 let teams = JSON.parse(body);
-                console.log(teams, '<---- team data')
-        //         
-    res.render('teams/show', {team: teams});
+                // console.log(teams, '<---- team data')
+        request(`${rootURL}/games?seasons[]=2021&team_ids[]=${req.params.id}&per_page=100`, function(err,response, body){
+            let gameData = JSON.parse(body);
+            let games = gameData.data;
+            
+            const sortedGames = games.sort((a, b) => b.id - a.id)
+            
+            console.log(sortedGames);
+            res.render('teams/show', {team: teams, games: sortedGames});
+        })
+    
     })
 }
 

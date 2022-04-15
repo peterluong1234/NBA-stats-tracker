@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+<div class="container">
     <table>
         <thead>
             <tr>
@@ -15,7 +16,7 @@
                 <td><%= r.team.full_name %></td>
                 <td><% if (user) { %>
                     <form action="/players/<%= r.id %>" method="POST">
-                        <button>FAVORITE</button>
+                        <button type="button" class="btn btn-outline-danger">FAVORITE</button>
                     </form>
                 <% } %>
                     
@@ -24,4 +25,5 @@
             <% }); %>
         </tbody>
     </table>
+    </div>
 <%- include('../partials/footer') %>

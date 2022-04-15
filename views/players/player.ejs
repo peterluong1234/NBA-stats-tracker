@@ -1,70 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('../partials/header') %>
 
-</head>
-<body>
-    <nav>
-        <div>NBA STATS</div>
-        <div><a href="/">HOME</a></div>
-            <div><a href="/players/search">PLAYERS</a></div>
-            <div><a href="/users">USER</a></div>
-            <div><a href="/teams">TEAMS</a></div>
-        </div>
-        <% if (user) { %>
-            <a href="/logout">LOG OUT</a>
-        <% } else { %>
-            <!-- <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>  -->
-            <a href="/auth/google" class="login">LOG IN&nbsp;</a> 
-        <% } %>
-    </nav>
-    <main>
-        <div class="header">
+<div class="container-md d-flex justify-content-center">
+    <div>
             <div><h1><%= title %></h1></div>
-            <% if (user) { %>
-                <div></div><form action="/players/<%= profile.id %>" method="POST">
-                    <button>FAVORITE</button>
-                </form></div>
-            <% } %>
-
             <div><h2><%= profile.position %></h2></div>
-        </div>
-        <div>
             <div><%= profile.team.full_name %></div></br>
-        </div>
+            <div><% if (user) { %>
+                <form action="/players/<%= profile.id %>" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></div>
         
-        <table>
+    </div>
+        <table class="table table-borderless">
             <thead>
                 <tr>
-                    <td>Gp</td>
-                    <td>Min</td>
-                    <td>Pts</td>
-                    <td>Fg%</td>
-                    <td>3pt%</td>
-                    <td>Reb</td>
-                    <td>Ast</td>
-                    <td>Stl</td>
-                    <td>Blk</td>
+                    <th class="col">GP</td>
+                    <th class="col">MIN</td>
+                    <th class="col">PTS</td>
+                    <th class="col">FG%</td>
+                    <th class="col">3PT%</td>
+                    <th class="col">REB</td>
+                    <th class="col">AST</td>
+                    <th class="col">STL</td>
+                    <th class="col">BLK</td>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><%= stats.games_played %></td>
-                    <td><%- parseFloat(stats.min).toFixed(2) %></td>
-                    <td><%= stats.pts %></td>
-                    <td><%- parseFloat(stats.fg_pct * 100).toFixed(2) %></td>
-                    <td><%- parseFloat(stats.fg3_pct * 100).toFixed(2) %></td>
-                    <td><%= stats.reb %></td>
-                    <td><%= stats.ast %></td>
-                    <td><%= stats.stl %></td>
-                    <td><%= stats.blk %></td>
+                    <td class="col"><%= stats.games_played %></td>
+                    <td class="col"><%- parseFloat(stats.min).toFixed(2) %></td>
+                    <td class="col"><%= stats.pts %></td>
+                    <td class="col"><%- parseFloat(stats.fg_pct * 100).toFixed(2) %></td>
+                    <td class="col"><%- parseFloat(stats.fg3_pct * 100).toFixed(2) %></td>
+                    <td class="col"><%= stats.reb %></td>
+                    <td class="col"><%= stats.ast %></td>
+                    <td class="col"><%= stats.stl %></td>
+                    <td class="col"><%= stats.blk %></td>
                 </tr>
             </tbody>
         </table>
 
+    </div>
 
 
 <%- include('../partials/footer') %>
