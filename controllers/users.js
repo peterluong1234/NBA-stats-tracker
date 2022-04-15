@@ -28,15 +28,15 @@ async function index(req, res) {
         
     await Player.find({ usersFavorited: req.user._id },function(err, foundPlayers) {
         if (err) {
-            res.render('users/index', { title: `favorite players`})
+            res.render('users/index', { title: `Favorite Players`})
         }
         else {
             Team.find({ usersFavorited: req.user._id }, function(err, foundTeams) {
                 if(err) {
-                    res.render('users/index', { title: `favorite players`, foundPlayers: foundPlayers});
+                    res.render('users/index', { title: `Favorite Players`, foundPlayers: foundPlayers});
                 }
                 else {
-                    res.render('users/index', { title: `favorite players`, foundPlayers: foundPlayers, foundTeams: foundTeams});
+                    res.render('users/index', { title: `Favorite Players`, title2: `Favorite Teams`, foundPlayers: foundPlayers, foundTeams: foundTeams});
                 }
             })
         

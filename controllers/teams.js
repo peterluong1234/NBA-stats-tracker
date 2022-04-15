@@ -79,11 +79,23 @@ async function addToFavorites(req, res) {
     })
 }
 
+async function deleteTeam(req, res) {
+    // find player in database
+    // remove user id from player
+
+    await Team.findOneAndUpdate({ id: req.params.id }, {$pull: {usersFavorited: req.user._id}}, (err, data) => {
+        if (err) {
+            return console.log("There was an error");
+        }
+    })
+
+    await res.redirect('/users/');
+
+}
+
 module.exports = {
-    // search,
     index,
     show,
-    // searchPlayer,
     addToFavorites,
-    // delete: deletePlayer
+    delete: deleteTeam
 }

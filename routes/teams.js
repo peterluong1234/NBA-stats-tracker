@@ -8,7 +8,7 @@ const teamsCtrl = require('../controllers/teams');
 router.get('/', teamsCtrl.index);
 router.get('/:id', teamsCtrl.show);
 router.post('/:id',teamsCtrl.addToFavorites);
-// router.delete('/:id', playersCtrl.delete);
+router.delete('/:id', teamsCtrl.delete);
 
 
 module.exports = router;

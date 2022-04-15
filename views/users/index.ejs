@@ -1,10 +1,8 @@
 <%- include('../partials/header') %>
 
         <div class="header">
-            <div><h1><%= title %></h1></div>
-            
             <table>
-
+                <div><h3><%= title %></h3></div>
                 <thead>
                     <tr>
                         <td>Name:</td>
@@ -20,6 +18,33 @@
                         <td><%= `${p.city} ${p.team}`%></td>
                         <td><%= p.position %></td>
                         <td><form action="/players/<%= p.id %>?_method=DELETE" method="POST">
+                            <button>X</button>
+                        </form></td>
+                    </tr>
+                </tbody>
+            <% }) %>
+            </table>
+
+            
+            <table>
+                <div><h3><%= title2 %></h3></div>
+                <thead>
+                    <tr>
+                        <td>Name:</td>
+                        <td>City:</td>
+                        <td>Conference:</td>                        
+                        <td></td>
+                    </tr>
+                </thead
+                    <% foundTeams.forEach(function(f) { %>
+                <tbody>
+                    <tr>
+                        <td><a href="/teams/<%= f.id %>"><%= f.fullName %></a></td>
+                        <td><%= f.city %></td>
+                        <td><%= `${f.conference}ern` %></td>
+                        
+
+                        <td><form action="/teams/<%= f.id %>?_method=DELETE" method="POST">
                             <button>X</button>
                         </form></td>
                     </tr>
