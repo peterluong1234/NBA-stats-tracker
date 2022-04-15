@@ -54,21 +54,73 @@
               </tr>
           </thead>
           <tbody>
-            <tr><td><a href="/teams/1">Atlanta Hawks</a></td></tr>
-            <tr><td><a href="/teams/2">Boston Celtics</a></td></tr>
-            <tr><td><a href="/teams/3">Brooklyn Nets</a></td></tr>
-            <tr><td><a href="/teams/4">Charlotte Hornets</a></td></tr>
-            <tr><td><a href="/teams/5">Chicago Bulls</a></td></tr>
-            <tr><td><a href="/teams/6">Cleveland Cavaliers</a></td></tr>
-            <tr><td><a href="/teams/9">Detroit Pistons</a></td></tr>
-            <tr><td><a href="/teams/12">Indiana Pacers</a></td></tr>
-            <tr><td><a href="/teams/16">Miami Heat</a></td></tr>
-            <tr><td><a href="/teams/17">Milwaukee Bucks</a></td></tr>
-            <tr><td><a href="/teams/20">New York Knicks</a></td></tr>
-            <tr><td><a href="/teams/22">Orlando Magic</a></td></tr>
-            <tr><td><a href="/teams/23">Philadelphia 76ers</a></td></tr>
-            <tr><td><a href="/teams/28">Toronto Raptors</a></td></tr>
-            <tr><td><a href="/teams/30">Washington Wizards</a></td></tr>
+            <tr><td><a href="/teams/1">Atlanta Hawks</a></td><td><% if (user) { %><form action="/teams/1" method="POST"><button>FAVORITE</button></form><% } %></td></tr>
+            <tr><td><a href="/teams/2">Boston Celtics</a></td><td><% if (user) { %><form action="/teams/2" method="POST"><button>FAVORITE</button></form><% } %></td></tr>
+            <tr><td><a href="/teams/3">Brooklyn Nets</a></td><td><% if (user) { %>
+                <form action="/teams/3" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/4">Charlotte Hornets</a></td><td><% if (user) { %>
+                <form action="/teams/4" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/5">Chicago Bulls</a></td><td><% if (user) { %>
+                <form action="/teams/5" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/6">Cleveland Cavaliers</a></td><td><% if (user) { %>
+                <form action="/teams/6" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/9">Detroit Pistons</a></td><td><% if (user) { %>
+                <form action="/teams/9" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/12">Indiana Pacers</a></td><td><% if (user) { %>
+                <form action="/teams/12" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/16">Miami Heat</a></td><td><% if (user) { %>
+                <form action="/teams/16" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/17">Milwaukee Bucks</a></td><td><% if (user) { %>
+                <form action="/teams/17" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/20">New York Knicks</a></td><td><% if (user) { %>
+                <form action="/teams/20" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/22">Orlando Magic</a></td><td><% if (user) { %>
+                <form action="/teams/22" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/23">Philadelphia 76ers</a></td><td><% if (user) { %>
+                <form action="/teams/23" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/28">Toronto Raptors</a></td><td><% if (user) { %>
+                <form action="/teams/28" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+            <tr><td><a href="/teams/30">Washington Wizards</a></td><td><% if (user) { %>
+                <form action="/teams/30" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
           </tbody>
       </table>
   </form>
@@ -81,21 +133,81 @@
             </tr>
         </thead>
         <tbody>
-          <tr><td><a href="/teams/7">Dallas Maervicks</a></td></tr>
-          <tr><td><a href="/teams/8">Denver Nuggets</a></td></tr>
-          <tr><td><a href="/teams/10">Golden State Warriors</a></td></tr>
-          <tr><td><a href="/teams/11">Houston Rockets</a></td></tr>
-          <tr><td><a href="/teams/13">Los Angeles Clippers</a></td></tr>
-          <tr><td><a href="/teams/14">Los Angeles Lakers</a></td></tr>
-          <tr><td><a href="/teams/15">Memphis Grizzlies</a></td></tr>
-          <tr><td><a href="/teams/18">Minnesota Timberwolves</a></td></tr>
-          <tr><td><a href="/teams/19">New Orleans Pelicans</a></td></tr>
-          <tr><td><a href="/teams/21">Oklahoma City Thunder</a></td></tr>
-          <tr><td><a href="/teams/24">Phoenix Suns</a></td></tr>
-          <tr><td><a href="/teams/25">Portland Trailblazers</a></td></tr>
-          <tr><td><a href="/teams/26">Sacramento Kings</a></td></tr>
-          <tr><td><a href="/teams/27">San Antonio Spurs</a></td></tr>
-          <tr><td><a href="/teams/29">Utah Jazz</a></td></tr>
+          <tr><td><a href="/teams/7">Dallas Maervicks</a></td><td><% if (user) { %>
+                <form action="/teams/7" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/8">Denver Nuggets</a></td><td><% if (user) { %>
+                <form action="/teams/8" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/10">Golden State Warriors</a></td><td><% if (user) { %>
+                <form action="/teams/10" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/11">Houston Rockets</a></td><td><% if (user) { %>
+                <form action="/teams/11" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/13">Los Angeles Clippers</a></td><td><% if (user) { %>
+                <form action="/teams/13" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/14">Los Angeles Lakers</a></td><td><% if (user) { %>
+                <form action="/teams/14" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/15">Memphis Grizzlies</a></td><td><% if (user) { %>
+                <form action="/teams/15" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/18">Minnesota Timberwolves</a></td><td><% if (user) { %>
+                <form action="/teams/18" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/19">New Orleans Pelicans</a></td><td><% if (user) { %>
+                <form action="/teams/19" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/21">Oklahoma City Thunder</a></td><td><% if (user) { %>
+                <form action="/teams/21" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/24">Phoenix Suns</a></td><td><% if (user) { %>
+                <form action="/teams/24" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/25">Portland Trailblazers</a></td><td><% if (user) { %>
+                <form action="/teams/25" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/26">Sacramento Kings</a></td><td><% if (user) { %>
+                <form action="/teams/26" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/27">San Antonio Spurs</a></td><td><% if (user) { %>
+                <form action="/teams/27" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
+          <tr><td><a href="/teams/29">Utah Jazz</a></td><td><% if (user) { %>
+                <form action="/teams/29" method="POST">
+                    <button>FAVORITE</button>
+                </form>
+            <% } %></td></tr>
         </tbody>
     </table>
 </form>
