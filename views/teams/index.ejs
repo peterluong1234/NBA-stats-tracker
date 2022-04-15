@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
     
-<form id="choose-team-form" method="GET" action="/teams/:id">
+<!-- <form id="choose-team-form" method="GET" action="/teams/:id">
     <label>Eastern Conference Team:</label>
     <select name="id" >
       <option value="" disabled selected hidden>Please Choose...</option>
@@ -44,6 +44,81 @@
       <option value="29">Utah Jazz</option>
     </select>
     <input type="submit" value="View Team">
+  </form> -->
+
+  <form id="choose-team-form">
+      <table>
+          <thead>
+              <tr>
+                  <th><h3>Eastern Conference</h1></th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr><td><a href="/teams/1">Atlanta Hawks</a></td></tr>
+            <tr><td><a href="/teams/2">Boston Celtics</a></td></tr>
+            <tr><td><a href="/teams/3">Brooklyn Nets</a></td></tr>
+            <tr><td><a href="/teams/4">Charlotte Hornets</a></td></tr>
+            <tr><td><a href="/teams/5">Chicago Bulls</a></td></tr>
+            <tr><td><a href="/teams/6">Cleveland Cavaliers</a></td></tr>
+            <tr><td><a href="/teams/9">Detroit Pistons</a></td></tr>
+            <tr><td><a href="/teams/12">Indiana Pacers</a></td></tr>
+            <tr><td><a href="/teams/16">Miami Heat</a></td></tr>
+            <tr><td><a href="/teams/17">Milwaukee Bucks</a></td></tr>
+            <tr><td><a href="/teams/20">New York Knicks</a></td></tr>
+            <tr><td><a href="/teams/22">Orlando Magic</a></td></tr>
+            <tr><td><a href="/teams/23">Philadelphia 76ers</a></td></tr>
+            <tr><td><a href="/teams/28">Toronto Raptors</a></td></tr>
+            <tr><td><a href="/teams/30">Washington Wizards</a></td></tr>
+          </tbody>
+      </table>
   </form>
+
+  <form id="choose-team-form">
+    <table>
+        <thead>
+            <tr>
+                <th><h3>Western Conference</h1></th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="/teams/7">Dallas Maervicks</a></td></tr>
+          <tr><td><a href="/teams/8">Denver Nuggets</a></td></tr>
+          <tr><td><a href="/teams/10">Golden State Warriors</a></td></tr>
+          <tr><td><a href="/teams/11">Houston Rockets</a></td></tr>
+          <tr><td><a href="/teams/13">Los Angeles Clippers</a></td></tr>
+          <tr><td><a href="/teams/14">Los Angeles Lakers</a></td></tr>
+          <tr><td><a href="/teams/15">Memphis Grizzlies</a></td></tr>
+          <tr><td><a href="/teams/18">Minnesota Timberwolves</a></td></tr>
+          <tr><td><a href="/teams/19">New Orleans Pelicans</a></td></tr>
+          <tr><td><a href="/teams/21">Oklahoma City Thunder</a></td></tr>
+          <tr><td><a href="/teams/24">Phoenix Suns</a></td></tr>
+          <tr><td><a href="/teams/25">Portland Trailblazers</a></td></tr>
+          <tr><td><a href="/teams/26">Sacramento Kings</a></td></tr>
+          <tr><td><a href="/teams/27">San Antonio Spurs</a></td></tr>
+          <tr><td><a href="/teams/29">Utah Jazz</a></td></tr>
+        </tbody>
+    </table>
+</form>
+<!-- 
+  <form id="choose-team-form" method="GET" action="/teams/:id">
+    <label>Western Conference Team:</label>
+      <option value="7">Dallas Mavericks</option>
+      <option value="8">Denver Nuggets</option>
+      <option value="10">Golden State Warriors</option>
+      <option value="11">Houston Rockets</option>
+      <option value="13">Los Angeles Clippers</option>
+      <option value="14">Los Angeles Lakers</option>
+      <option value="15">Memphis Grizzlies</option>
+      <option value="18">Minnesota Timberwolves</option>
+      <option value="19">New Orleans Pelicans</option>
+      <option value="21">Oklahoma City Thunder</option>
+      <option value="24">Phoenix Suns</option>
+      <option value="25">Portland Trailblazers</option>
+      <option value="26">Sacramento Kings</option>
+      <option value="27">San Antonio Spurs</option>
+      <option value="29">Utah Jazz</option>
+    </select>
+    <input type="submit" value="View Team"> -->
+  <!-- </form> -->
 
 <%- include('../partials/footer') %>
