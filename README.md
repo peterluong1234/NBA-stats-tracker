@@ -30,8 +30,8 @@ On a daily basis, I pull out my phone, open up google and type in 'NBA'. In the 
 
 ## Getting Started
 ### Trello
-<br>https://nba-stats-tracker.herokuapp.com/
 https://trello.com/b/GrSrROaw/project-2
+<br>https://nba-stats-tracker.herokuapp.com/
 
 ### Next Steps
 - add more stats to players and team index pages
