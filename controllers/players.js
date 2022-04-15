@@ -48,12 +48,14 @@ function show (req, res) {
             request(
                 `${rootURL}/season_averages?season2021&player_ids[]=${req.params.id}`, function(err, response, body) {
                     playerAvg = JSON.parse(body);
+                    playerData = playerAvg.data[0];
+
                     if(playerAvg.data.length == 0) {
                         console.log('No data')
+                        res.render(`players/oldPlayer`,  { title: `${playerProfile.first_name} ${playerProfile.last_name}`, profile: playerProfile })
                     } else {
                         console.log(body);
 
-                    playerData = playerAvg.data[0];
                     // console.log(playerAvg.data);
                     console.log(playerData);
                     res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile });
