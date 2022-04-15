@@ -17,63 +17,66 @@ function index (req, res) {
     res.render('teams')
 }
 
-function addToFavorites(req, res) {
+async function addToFavorites(req, res) {
     console.log(req.params.id);
     // let found;
-    // let playerId = parseInt(req.params.id);
-    // Player.find( {id: req.params.id} , async function(err, player) {
-    //     // console.log(`line18 Player: ${player}`)
-    //     let playerData = {};
-    //     if(err){
-    //         console.log('not found');
-    //     } else if (player.length === 0 ) {
-    //         // steps for this if statement:
-    //         // 1. create player in DB
-    //         // 2. add player to favorites
+    let teamId = parseInt(req.params.id);
+    let found;
 
-    //         // this 'request' searches for the player
-    //         await request(
-    //             `${rootURL}/players/${req.params.id}`, async function(err, response, body) {
-    //                 let playerProfile = JSON.parse(body);
-    //                 playerData = {
-    //                     firstName: playerProfile.first_name,
-    //                     lastName: playerProfile.last_name,
-    //                     id: playerProfile.id,
-    //                     team: playerProfile.team.name,
-    //                     city: playerProfile.team.city,
-    //                     position: playerProfile.position                        
-    //                 }    
+    Team.find( {id: req.params.id} , async function(err, team) {
+        // console.log(`line18 Player: ${player}`)
+        let teamData = {};
+        if(err){
+            console.log('not found');
+        } else if (team.length === 0 ) {
+            // steps for this if statement:
+            // 1. create team in DB
+            // 2. add team to favorites
 
-    //             // player.create creates the player in DB
-    //                 await Player.create(playerData, function(err, createdPlayer) {
-    //                     // console.log(`player data: ${playerData}`,);
-    //                     console.log(`createdPlayer: ${createdPlayer.usersFavorited}`)
-    //                     createdPlayer.usersFavorited.push(req.user._id);
-    //                     createdPlayer.save();
-    //                     })
-    //     })
+            // this 'request' searches for the player
+            await request(
+                `${rootURL}/teams/${req.params.id}`, async function(err, response, body) {
+                    let teamProfile = JSON.parse(body);
+                    teamData = {  
+                        id: teamProfile.id,
+                        abbreviation: teamProfile.abbreviation,
+                        city: teamProfile.city,
+                        name: teamProfile.name,
+                        fullName: teamProfile.full_name,
+                        conference: teamProfile.conference,
+                        division: teamProfile.division
+                    }    
 
-    //     } else { 
-    //         // looks for player in DB, if user is already added to player.userFavorites, skip
-    //         await Player.find({ id: req.params.id}, function(err, foundPlayer) {
-    //              console.log(foundPlayer[0].usersFavorited);
-    //              for(let i = 0; i < foundPlayer[0].usersFavorited.length; i++) {
-    //                  if(parseInt(req.user._id) == parseInt(foundPlayer[0].usersFavorited[i])){
-    //                      found = true;
-    //                      console.log('player already added');
-    //                  }
-    //              }
-    //         });
+                // player.create creates the player in DB
+                    await Team.create(teamData, function(err, createdTeam) {
+                        // console.log(`player data: ${playerData}`,);
+                        // console.log(`createdPlayer: ${createdPlayer.usersFavorited}`)
+                        createdTeam.usersFavorited.push(req.user._id);
+                        createdTeam.save();
+                        })
+        })
+    
+        } else { 
+            // looks for player in DB, if user is already added to player.userFavorites, skip
+            await Team.find({ id: req.params.id}, function(err, foundTeam) {
+                 console.log(foundTeam[0].usersFavorited);
+                 for(let i = 0; i < foundTeam[0].usersFavorited.length; i++) {
+                     if(parseInt(req.user._id) == parseInt(foundTeam[0].usersFavorited[i])){
+                         found = true;
+                         console.log('player already added');
+                     }
+                 }
+            });
 
-    //         if (found != true) {
-    //             console.log('not found');
-    //             Player.find({ id: req.params.id}, function(err, foundPlayer) {
-    //                 foundPlayer[0].usersFavorited.push(req.user._id);
-    //                 foundPlayer[0].save();  
-    //             })
-    //         }
-    //     } 
-    // })
+            if (found != true) {
+                console.log('not found');
+                Team.find({ id: req.params.id}, function(err, foundTeam) {
+                    foundTeam[0].usersFavorited.push(req.user._id);
+                    foundTeam[0].save();  
+                })
+            }
+        } 
+    })
 }
 
 module.exports = {
