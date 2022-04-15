@@ -71,6 +71,11 @@ function addToFavorites(req, res) {
     console.log(req.params.id);
     let found;
     let playerId = parseInt(req.params.id);
+
+    // NOTE: As opposed to adding all players to database, this function finds the player in api database
+    // It then adds the player to the players.DB
+    // Afterwards, it will add the user._id to the players.usersFavorite arr to list the user as already favorited
+
     Player.find( {id: req.params.id} , async function(err, player) {
         // console.log(`line18 Player: ${player}`)
         let playerData = {};
@@ -82,7 +87,7 @@ function addToFavorites(req, res) {
             // 2. add player to favorites
 
             // this 'request' searches for the player
-            await request(
+            request(
                 `${rootURL}/players/${req.params.id}`, async function(err, response, body) {
                     let playerProfile = JSON.parse(body);
                     playerData = {
@@ -95,7 +100,7 @@ function addToFavorites(req, res) {
                     }    
 
                 // player.create creates the player in DB
-                    await Player.create(playerData, function(err, createdPlayer) {
+                    Player.create(playerData, function(err, createdPlayer) {
                         // console.log(`player data: ${playerData}`,);
                         console.log(`createdPlayer: ${createdPlayer.usersFavorited}`)
                         createdPlayer.usersFavorited.push(req.user._id);
@@ -116,7 +121,7 @@ function addToFavorites(req, res) {
             });
 
             if (found != true) {
-                console.log('not found');
+                // console.log('not found');
                 Player.find({ id: req.params.id}, function(err, foundPlayer) {
                     foundPlayer[0].usersFavorited.push(req.user._id);
                     foundPlayer[0].save();  
