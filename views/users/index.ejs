@@ -21,7 +21,7 @@
                         <td><%= `${p.city} ${p.team}`%></td>
                         <td><%= p.position %></td>
                         <td><form action="/players/<%= p.id %>?_method=DELETE" method="POST">
-                            <button type="button" class="btn btn-outline-danger">X</button>
+                            <button>X</button>
                         </form></td>
                     </tr>
                 </tbody>
@@ -50,7 +50,7 @@
                         
 
                         <td><form action="/teams/<%= f.id %>?_method=DELETE" method="POST">
-                            <button type="button" class="btn btn-outline-danger">X</button>
+                            <button>X</button>
                         </form></td>
                     </tr>
                 </tbody>

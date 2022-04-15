@@ -7,7 +7,7 @@
             <div><%= profile.team.full_name %></div></br>
             <% if (user) { %>
                 <form action="/players/<%= profile.id %>" method="POST">
-                    <button type="button" class="btn btn-outline-danger">FAVORITE</button>
+                    <button>FAVORITE</button>
                 </form>
             <% } %>
             </br>
