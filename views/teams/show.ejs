@@ -1,15 +1,17 @@
 <%- include('../partials/header') %>
+<div class="container-sm d-flex justify-content-center">
+    <div>
     <div class="fs-2 fw-bold"><%= team.full_name%></div>
-    <div class="fs-4 fw-light"><%= team.conference%></div>
-    <div class="fs-4 fw-light "><%= team.division%></div>
+    <div class="fs-4 fw-light"><%= team.conference%>ern Conference</div>
+    </div>
     <table class="table">
         <thead>
             <tr>
                 <th>Date</th>
-                <th>W/L</th>
                 <th>Opponent</th>
-                <th>Score</th>
                 <th>Opp. Score</th>
+                <th>Score</th>
+                <th>W/L</th>
             </tr>
         </thead>
     <tbody>
@@ -21,30 +23,37 @@
                 if (games[i].home_team_)
             } -->
             <% if (games[i].home_team.id == team.id) { if (games[i].home_team_score > games[i].visitor_team_score) { %>
-                    <td>Win</td>
+                    
                     <td><a href='/teams/<%= games[i].visitor_team.id %>'><%= games[i].visitor_team.full_name%></a></td>
-                    <td><%= games[i].home_team_score%></td>
+                    
                     <td><%= games[i].visitor_team_score%></td>
-                <% } else if (games[i].home_team_score < games[i].visitor_team_score){ %> 
-                    <td>Loss</td>
-                    <td ><a href='/teams/<%= games[i].visitor_team.id %>'><%= games[i].visitor_team.full_name%></a></td>
                     <td><%= games[i].home_team_score%></td>
-                    <td><%= games[i].visitor_team_score%></td><% } %>
-                <% } else { if (games[i].visitor_team_score > games[i].home_team_score) { %> 
                     <td>Win</td>
-                    <td><a href='/teams/<%= games[i].home_team.id %>'><%= games[i].home_team.full_name%></td>
+                    
+                <% } else if (games[i].home_team_score < games[i].visitor_team_score){ %> 
+                    
+                    <td ><a href='/teams/<%= games[i].visitor_team.id %>'><%= games[i].visitor_team.full_name%></a></td>
                     <td><%= games[i].visitor_team_score%></td>
                     <td><%= games[i].home_team_score%></td>
-                    <% } else if (games[i].visitor_team_score < games[i].home_team_score){ %> 
-                        <td>Loss</td>
-                        <td><a href='/teams/<%= games[i].home_team.id %>'><%= games[i].home_team.full_name%></a></td>
+                    <td>Loss</td><% } %>
+                <% } else { if (games[i].visitor_team_score > games[i].home_team_score) { %> 
+                    
+                    <td><a href='/teams/<%= games[i].home_team.id %>'><%= games[i].home_team.full_name%></td>
+                        <td><%= games[i].home_team_score%></td>
                         <td><%= games[i].visitor_team_score%></td>
-                        <td><%= games[i].home_team_score%></td> <% } %>
+                        <td>Win</td>
+                    <% } else if (games[i].visitor_team_score < games[i].home_team_score){ %> 
+                        
+                        <td><a href='/teams/<%= games[i].home_team.id %>'><%= games[i].home_team.full_name%></a></td>
+                        <td><%= games[i].home_team_score%></td>
+                        <td><%= games[i].visitor_team_score%></td>
+                        <td>Loss</td> <% } %>
                 <% }  %> 
             </tr>
         <% } %>
                 </tbody>
     </table>
+</div>
     <!-- id: Number,
     abbreviation: String,
 	city: String,
