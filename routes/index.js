@@ -20,8 +20,8 @@ router.get('/', function(req, res) {
         'Luka Doncic',
         'Trae Young',
         'DeMar DeRozan',
-        'Nikola Jokic',
         'Jayson Tatum',
+        'Nikola Jokic',
         'Devin Booker',
         'Donovan Mithcell',
         'Stephen Curry'
