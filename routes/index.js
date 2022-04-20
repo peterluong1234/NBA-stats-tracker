@@ -2,7 +2,9 @@ var router = require('express').Router();
 const passport = require('passport');
 const request = require("request");
 const rootURL = 'https://www.balldontlie.io/api/v1'
+const fetch = require("node-fetch");
 
+// import fetch from 'node-fetch';
 // The root route renders our only view
 router.get('/', function(req, res) {
   // Where do you want to go for the root route
@@ -13,7 +15,7 @@ router.get('/', function(req, res) {
   
   request(
     `${rootURL}/season_averages?season=2021&player_ids[]=145&player_ids[]=15&player_ids[]=132&player_ids[]=490&player_ids[]=125&player_ids[]=246&player_ids[]=434&player_ids[]=57&player_ids[]=322&player_ids[]=115`, 
-    function(err, response, body) {
+    async function(err, response, body) {
       const topPlayers = [
         'Joel Embiid',
         'Giannis Antetokounmpo',
@@ -29,9 +31,31 @@ router.get('/', function(req, res) {
       let playerData = JSON.parse(body);
       // console.log(playerData.data);
       let playerDataSorted = playerData.data.sort((a,b) => b.pts - a.pts);
-      res.render('index', {playerData: playerDataSorted, topPlayer: topPlayers});
+      // res.render('index', {playerData: playerDataSorted, topPlayer: topPlayers});
       
-      
+      // request (`${rootURL}/teams/`, async function(err, response, body) {
+      //           let teams = JSON.parse(body);
+      //           // console.log(teams, '<---- team data')
+      //   request(`${rootURL}/games?seasons[]=2021`, function(err,response, body){
+      //       let gameData = JSON.parse(body);
+      //       let games = gameData.data;
+            
+      //       const sortedGames = games.sort((a, b) => b.id - a.id)
+            
+      //       // console.log(sortedGames);
+      //       res.render('teams/show', {team: teams, games: sortedGames});
+      //   })
+        let gameDataBody = []
+        let sortedGames
+        await fetch(`${rootURL}/games?seasons[]=2021`)
+        .then(response => response.json())
+        .then(data => { gameDataBody = data.data;
+          sortedGames = gameDataBody.sort((a, b) => b.id - a.id)
+          res.render('index', {playerData: playerDataSorted, topPlayer: topPlayers, games: sortedGames})
+        })
+
+
+    // })
     }
   )
 

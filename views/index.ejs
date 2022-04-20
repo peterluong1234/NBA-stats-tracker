@@ -119,4 +119,9 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <% for(let i = 0; i < 5; i++) { %> 
+            <div><%= games[i].id %></div>
+        <% } %>
+    </div>
 <%- include('./partials/footer') %>
