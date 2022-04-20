@@ -47,10 +47,11 @@ router.get('/', function(req, res) {
       //   })
         let gameDataBody = []
         let sortedGames
-        await fetch(`${rootURL}/games?seasons[]=2021`)
+        await fetch(`${rootURL}/games?seasons[]=2021&postseason=true`)
         .then(response => response.json())
         .then(data => { gameDataBody = data.data;
           sortedGames = gameDataBody.sort((a, b) => b.id - a.id)
+          console.log(sortedGames)
           res.render('index', {playerData: playerDataSorted, topPlayer: topPlayers, games: sortedGames})
         })
 
