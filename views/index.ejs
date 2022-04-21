@@ -120,6 +120,7 @@
         </table>
     </div>
     <div class="container-sm d-flex justify-content-center">
+        <div class="text"><h2>PLAYOFF GAMES: </h2></div>
         <table class="table table-striped">
             <tbody>
                 <% for(let i = 0; i < 10; i++) { %> 
@@ -129,10 +130,10 @@
                         <% date = new Date(date)%>
                         <% return  date.toLocaleDateString()  } %>
                     <td><%= dateChange(games[i].date) %></td>
-                    <td><%= games[i].home_team.full_name %></td>
+                    <td><a href="/teams/<%= games[i].home_team.id %>"><%= games[i].home_team.full_name %></a></td>
                     <td><%= games[i].home_team_score %></td>
                     <td><%= games[i].visitor_team_score %></td>
-                    <td class="text-end"><%= games[i].visitor_team.full_name %></td>
+                    <td class="text-end"><a href="/teams/<%= games[i].visitor_team.id %>"><%= games[i].visitor_team.full_name %></a></td>
                 </tr>
                 <% } %>
                 <% } %>
