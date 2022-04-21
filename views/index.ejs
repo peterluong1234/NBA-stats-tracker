@@ -119,9 +119,27 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <% for(let i = 0; i < 10; i++) { %> 
-            <div><%= games[i].id %></div>
-        <% } %>
+    <div class="container-sm d-flex justify-content-center">
+        <table class="table table-striped">
+            <tbody>
+                <% for(let i = 0; i < 10; i++) { %> 
+                    <% if (games[i].home_team_score != 0) { %>
+                <tr>
+                    <% function dateChange(date)  { %>
+                        <% date = new Date(date)%>
+                        <% return  date.toLocaleDateString()  } %>
+                    <td><%= dateChange(games[i].date) %></td>
+                    <td><%= games[i].home_team.full_name %></td>
+                    <td><%= games[i].home_team_score %></td>
+                    <td><%= games[i].visitor_team_score %></td>
+                    <td class="text-end"><%= games[i].visitor_team.full_name %></td>
+                </tr>
+                <% } %>
+                <% } %>
+            </tbody>
+        </table>
     </div>
 <%- include('./partials/footer') %>
+
+
+<div></div>

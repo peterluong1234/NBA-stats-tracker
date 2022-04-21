@@ -51,7 +51,12 @@ router.get('/', function(req, res) {
         .then(response => response.json())
         .then(data => { gameDataBody = data.data;
           sortedGames = gameDataBody.sort((a, b) => b.id - a.id)
-          console.log(sortedGames)
+          // console.log(sortedGames)
+          // sortedGames.forEach(game => {
+          //   let date = game.date;
+          //   date = new Date();
+          //   game.date = date.toISOString().split('T')[0]
+          // })
           res.render('index', {playerData: playerDataSorted, topPlayer: topPlayers, games: sortedGames})
         })
 
