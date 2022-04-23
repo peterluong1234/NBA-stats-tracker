@@ -128,6 +128,7 @@
                 <tr>
                     <% function dateChange(date)  { %>
                         <% date = new Date(date)%>
+                        <% date.setDate(date.getDate() + 1) %>
                         <% return  date.toLocaleDateString()  } %>
                     <td><%= dateChange(games[i].date) %></td>
                     <td><a href="/teams/<%= games[i].home_team.id %>"><%= games[i].home_team.full_name %></a></td>
