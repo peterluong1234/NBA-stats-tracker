@@ -4,7 +4,7 @@
     <div>
             <div><h1><%= title %></h1></div>
             <div><h2><%= profile.position %></h2></div>
-            <div><%= profile.team.full_name %></div></br>
+            <div><a href="/teams/<%= profile.team.id %>"><%= profile.team.full_name %></a></div></br>
             <div><% if (user) { %>
                 <form action="/players/<%= profile.id %>" method="POST">
                     <button>FAVORITE</button>
