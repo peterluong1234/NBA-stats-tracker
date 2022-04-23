@@ -16,9 +16,10 @@
         </thead>
     <tbody>
         <% for(let i = 0; i < 5; i++) { %>
-            <% let date = new Date(games[i].date).toDateString() %>
+            <% let date = new Date(games[i].date)%>
+            <% date.setDate(date.getDate() + 1) %>
             <tr>
-            <td><%= date %></td>
+            <td><%= date.toDateString()  %></td>
             <!-- if (games[i].home_team.id == team.id) {
                 if (games[i].home_team_)
             } -->
