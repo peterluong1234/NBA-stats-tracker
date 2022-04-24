@@ -3,6 +3,7 @@
     <div class="container-md justify-content-center">
         
         <div class="col-md-auto fs-4 fw-bold text">TOP PLAYERS: </div>
+        <div class="table-responsive-sm">
         <table class="col table table-striped table-borderless">
             <thead>
                 <tr>
@@ -120,9 +121,11 @@
             </tbody>
         </table>
     </div>
+    </div>
     <div class="container-md justify-content-center">
         
         <div class="col-md-auto fs-4 fw-bold text">PLAYOFF GAMES: </div>
+        <div class="table-responsive-sm">
         <table class="col table table-striped">
             <tbody>
                 <% for(let i = 0; i < 15; i++) { %> 
@@ -158,5 +161,6 @@
                 <% } %>
             </tbody>
         </table>
+        </div>
     </div>
 <%- include('./partials/footer') %>
