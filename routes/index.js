@@ -25,7 +25,7 @@ router.get('/', function(req, res) {
         'Jayson Tatum',
         'Nikola Jokic',
         'Devin Booker',
-        'Donovan Mithcell',
+        'Donovan Mitchell',
         'Stephen Curry'
       ]
       let playerData = JSON.parse(body);
