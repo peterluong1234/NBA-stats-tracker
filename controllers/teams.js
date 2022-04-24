@@ -14,7 +14,7 @@ function show (req, res) {
             
             const sortedGames = games.sort((a, b) => b.id - a.id)
             
-            console.log(sortedGames);
+            // console.log(sortedGames);
             res.render('teams/show', {team: teams, games: sortedGames});
         })
     

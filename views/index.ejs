@@ -1,8 +1,8 @@
 <%- include('./partials/header') %>
 </br>
     <div class="container-md justify-content-center">
-        <div class="row">
-        <div class="col-md-auto text"><h2>TOP PLAYERS: </h2></div>
+        
+        <div class="col-md-auto fs-4 fw-bold text">TOP PLAYERS: </div>
         <table class="col table table-striped table-borderless">
             <thead>
                 <tr>
@@ -120,10 +120,9 @@
             </tbody>
         </table>
     </div>
-    </div>
     <div class="container-md justify-content-center">
-        <div class="row">
-        <div class="col-md-auto text"><h2>PLAYOFF GAMES: </h2></div>
+        
+        <div class="col-md-auto fs-4 fw-bold text">PLAYOFF GAMES: </div>
         <table class="col table table-striped">
             <tbody>
                 <% for(let i = 0; i < 15; i++) { %> 
@@ -134,15 +133,30 @@
                         <% date.setDate(date.getDate() + 1) %>
                         <% return  date.toLocaleDateString()  } %>
                     <td><%= dateChange(games[i].date) %></td>
-                    <td><a href="/teams/<%= games[i].home_team.id %>"><img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (games[i].home_team.abbreviation).toLowerCase() %>.png" alt="" width="30" height="30"> <%= games[i].home_team.full_name %></a></td>
-                    <td><%= games[i].home_team_score %></td>
-                    <td><%= games[i].visitor_team_score %></td>
-                    <td class="text-end"><a href="/teams/<%= games[i].visitor_team.id %>"><%= games[i].visitor_team.full_name %> <img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (games[i].visitor_team.abbreviation).toLowerCase() %>.png" alt="" width="30" height="30"></a></td>
+                    <td><div class="column"><a href="/teams/<%= games[i].home_team.id %>">
+                        <img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (games[i].home_team.abbreviation).toLowerCase() %>.png" alt="" width="50" height="50"> 
+                        </div>
+                        <div class="column">
+                        <%= games[i].home_team.name %></a>
+                    </div>
+                    </td>
+                    <% if (games[i].home_team_score > games[i].visitor_team_score) { %>
+                    <td class="fw-bold fs-2"><%= games[i].home_team_score %></td>
+                    <td class="fs-2"><%= games[i].visitor_team_score %></td>
+                    <% } else { %>
+                        <td class="fs-2"><%= games[i].home_team_score %></td>
+                        <td class="fw-bold fs-2"><%= games[i].visitor_team_score %></td>
+                    <% } %>
+                    <td class="column text-end">
+                        <div class="column">
+                            <img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (games[i].visitor_team.abbreviation).toLowerCase() %>.png" alt="" width="50" height="50">
+                        </div>
+                        <a href="/teams/<%= games[i].visitor_team.id %>"><%= games[i].visitor_team.name %>
+                        </a></td>
                 </tr>
                 <% } %>
                 <% } %>
             </tbody>
         </table>
-    </div>
     </div>
 <%- include('./partials/footer') %>

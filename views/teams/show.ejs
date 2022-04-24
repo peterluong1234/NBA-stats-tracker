@@ -1,16 +1,23 @@
 <%- include('../partials/header') %>
-<div class="container-sm d-flex justify-content-center">
-    <div>
-    <div class="fs-2 fw-bold"><%= team.full_name%></div>
-    <div class="fs-4 fw-light"><%= team.conference%>ern Conference</div>
-    </div>
-    <table class="table">
+
+<div class="container-md justify-content-center">
+    <div class="row">
+        <div class="col d-flex">
+            <div class="d-inline">
+                <img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (team.abbreviation).toLowerCase() %>.png" alt="" width="100" height="100">
+            </div>
+            <div class="d-inline">
+                <div class="row fs-2 fw-bold"><%= team.full_name%></div>
+                <div class="row fs-4 fw-light"><%= team.conference%>ern Conference</div></div>
+            </div>
+        </div>
+    <table class="col table">
         <thead>
             <tr>
                 <th>Date</th>
                 <th></th>
-                <th>Score</th>
-                <th>Opp. Score</th>
+                <th></th>
+                <th></th>
                 <th></th>
                 <th>W/L</th>
             </tr>
@@ -30,15 +37,15 @@
                 <% if (games[i].home_team_score > games[i].visitor_team_score) { %>
 
                     <td class="fs-2 fw-bold text"><%= games[i].home_team_score%></td>
-                    <td class="fs-2 fw-bold text"><%= games[i].visitor_team_score%></td>
+                    <td class="fs-2 text"><%= games[i].visitor_team_score%></td>
                     <td><a href='/teams/<%= games[i].visitor_team.id %>'><img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (games[i].visitor_team.abbreviation).toLowerCase() %>.png" alt="" width="50" height="50"></a></td>
                     <% if (games[i].status != 'Final') { %>
                         <td><%= games[i].status %></td>
                     <% } else { %>                        
-                        <td>Win</td>
+                        <td class="fw-bold text">Win</td>
                     <% } %>
                 <% } else if (games[i].home_team_score < games[i].visitor_team_score){ %> 
-                    <td class="fs-2 fw-bold text"><%= games[i].home_team_score%></td>
+                    <td class="fs-2 text"><%= games[i].home_team_score%></td>
                     <td class="fs-2 fw-bold text"><%= games[i].visitor_team_score%></td>
                     <td ><a href='/teams/<%= games[i].visitor_team.id %>'><img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (games[i].visitor_team.abbreviation).toLowerCase() %>.png" alt="" width="50" height="50"></a></td>
                     
@@ -49,15 +56,15 @@
                     <% }  } %>
                 <% } else { if (games[i].visitor_team_score > games[i].home_team_score) { %> 
                     <td class="fs-2 fw-bold text"><%= games[i].visitor_team_score%></td>
-                    <td class="fs-2 fw-bold text"><%= games[i].home_team_score%></td>
+                    <td class="fs-2 text"><%= games[i].home_team_score%></td>
                     <td><a href='/teams/<%= games[i].home_team.id %>'><img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (games[i].home_team.abbreviation).toLowerCase() %>.png" alt="" width="50" height="50"></td>
                         <% if (games[i].status != 'Final') { %>
                             <td><%= games[i].status %></td>
                         <% } else { %>                        
-                            <td>Win</td>
+                            <td class="fw-bold text">Win</td>
                         <% } %>
                     <% } else if (games[i].visitor_team_score < games[i].home_team_score){ %> 
-                        <td class="fs-2 fw-bold text"><%= games[i].visitor_team_score%></td>
+                        <td class="fs-2 text"><%= games[i].visitor_team_score%></td>
                         <td class="fs-2 fw-bold text"><%= games[i].home_team_score%></td>                        
                         <td><a href='/teams/<%= games[i].home_team.id %>'><img src="https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/<%= (games[i].home_team.abbreviation).toLowerCase() %>.png" alt="" width="50" height="50"></a></td>
 
@@ -71,6 +78,7 @@
         <% } %>
                 </tbody>
     </table>
+    </div>
 </div>
     <!-- id: Number,
     abbreviation: String,
