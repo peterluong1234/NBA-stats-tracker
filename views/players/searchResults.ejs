@@ -18,7 +18,7 @@
                 <td><%= r.team.full_name %></td>
                 <td><% if (user) { %>
                     <form action="/players/<%= r.id %>" method="POST">
-                        <button>FAVORITE</button>
+                        <button class="btn btn-outline-danger">FAVORITE</button>
                     </form>
                 <% } %>
                     
