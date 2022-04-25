@@ -15,6 +15,8 @@ On a daily basis, I pull out my phone, open up google and type in 'NBA'. In the 
 ![NBA_SearchResults](https://user-images.githubusercontent.com/95894562/163586966-fcf7877e-7b75-4360-b2b2-42656a5e3450.png)
 ### User Favorites
 ![NBA_UsersFavorites](https://user-images.githubusercontent.com/95894562/163586979-c731fafe-0257-49fc-a493-fce14526e6b2.png)
+### Team Page
+![Screen Shot 2022-04-24 at 9 05 08 PM](https://user-images.githubusercontent.com/95894562/165019144-96e0d18a-7891-4c5f-a6c3-fb891d5adec2.png)
 
 ## Technologies Used
 - Node.JS
