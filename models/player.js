@@ -3,6 +3,12 @@ const mongoose = require('mongoose');
 // Create your User Model
 const Schema = mongoose.Schema;
 
+const commentSchema = new mongoose.Schema({
+  content: String,
+}, {
+  timestamps: true
+});
+
 const playerSchema = new mongoose.Schema({
     usersFavorited: [],
 	firstName: String,
@@ -10,7 +16,8 @@ const playerSchema = new mongoose.Schema({
     id: Number,
     team: String,
     city: String,
-    position: String
+    position: String,
+    comments: [commentSchema]
   });
 
 module.exports = mongoose.model('Player', playerSchema);

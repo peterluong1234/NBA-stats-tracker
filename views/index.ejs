@@ -129,7 +129,7 @@
         <table class="col table table-striped">
             <tbody>
                 <% for(let i = 0; i < 15; i++) { %> 
-                    <% if (games[i].home_team_score != 0) { %>
+                    <% if (games[i].status == 'Final') { %>
                 <tr>
                     <% function dateChange(date)  { %>
                         <% date = new Date(date)%>
