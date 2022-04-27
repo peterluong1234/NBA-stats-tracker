@@ -23,6 +23,7 @@ function create(req, res) {
                         let playerProfile = JSON.parse(body);
                         let commentBody = req.body;
                         commentBody.user = req.user._id;
+                        commentBody.name = req.user.name
                         // if(req.user) {
                         //     console.log(typeof(req.user._id))
                         // }
@@ -42,11 +43,12 @@ function create(req, res) {
                 await Player.find({ id: req.params.id}, function(err, foundPlayer) {
                     //  console.log(foundPlayer[0].usersFavorited);
                     let commentBody = req.body;
-                             commentBody.user = req.user._id;
-                             foundPlayer[0].comments.push(commentBody);
-                             foundPlayer[0].save(function(err) {
-                                 res.redirect(`/players/${req.params.id}`)
-                             })
+                    commentBody.user = req.user._id;
+                    commentBody.name = req.user.name
+                    foundPlayer[0].comments.push(commentBody);
+                    foundPlayer[0].save(function(err) {
+                        res.redirect(`/players/${req.params.id}`)
+                    })
                 });
             } 
         })
