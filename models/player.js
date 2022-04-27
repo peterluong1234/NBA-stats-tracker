@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const commentSchema = new mongoose.Schema({
+  user: {type: Schema.Types.ObjectId},
   content: String,
 }, {
   timestamps: true
@@ -11,7 +12,7 @@ const commentSchema = new mongoose.Schema({
 
 const playerSchema = new mongoose.Schema({
     usersFavorited: [],
-	firstName: String,
+  	firstName: String,
     lastName: String,
     id: Number,
     team: String,

@@ -21,7 +21,11 @@ function create(req, res) {
                     `${rootURL}/players/${req.params.id}`, async function(err, response, body) {
                         
                         let playerProfile = JSON.parse(body);
-
+                        let commentBody = req.body;
+                        commentBody.user = req.user._id;
+                        // if(req.user) {
+                        //     console.log(typeof(req.user._id))
+                        // }
                         Player.create({
                             firstName: playerProfile.first_name,
                             lastName: playerProfile.last_name,
@@ -29,7 +33,7 @@ function create(req, res) {
                             team: playerProfile.team.name,
                             city: playerProfile.team.city,
                             position: playerProfile.position,
-                            comments: req.body   })
+                            comments: commentBody   })
             })
     
             } else { 

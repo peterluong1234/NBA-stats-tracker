@@ -54,9 +54,22 @@
       <button type="submit" class="btn btn-primary" value="Add Comment">Add Comment</button>
     </div>
     </form>
+
+    <% if(db != undefined) {%>
+        <ul class="list-unstyled">
+        <% db.comments.forEach(comment=> { %>
+            
+                <li class="media">
+                    <div class="media-body">
+                        <h5 class="mt-1 mb-1">Comment</h5>
+                        <%= comment.content %>
+                    </div>
+                </li>
+            
+        <% }) %>
+    </ul>
+    <% } %>
     </div>
 
-
-
-
+    
 <%- include('../partials/footer') %>
