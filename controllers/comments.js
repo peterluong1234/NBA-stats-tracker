@@ -26,7 +26,7 @@ function create(req, res) {
                         // if(req.user) {
                         //     console.log(typeof(req.user._id))
                         // }
-                        Player.create({
+                        await Player.create({
                             firstName: playerProfile.first_name,
                             lastName: playerProfile.last_name,
                             id: playerProfile.id,
@@ -34,35 +34,20 @@ function create(req, res) {
                             city: playerProfile.team.city,
                             position: playerProfile.position,
                             comments: commentBody   })
+                        await res.redirect(`/players/${req.params.id}`)                            
             })
+   
     
             } else { 
-                // looks for player in DB, if user is already added to player.userFavorites, skip
                 await Player.find({ id: req.params.id}, function(err, foundPlayer) {
                     //  console.log(foundPlayer[0].usersFavorited);
-                     for(let i = 0; i < foundPlayer[0].usersFavorited.length; i++) {
-                         if(parseInt(req.user._id) == parseInt(foundPlayer[0].usersFavorited[i])){
-                             found = true;
-                             foundPlayer[0].comments.push(req.body);
+                    let commentBody = req.body;
+                             commentBody.user = req.user._id;
+                             foundPlayer[0].comments.push(commentBody);
                              foundPlayer[0].save(function(err) {
                                  res.redirect(`/players/${req.params.id}`)
                              })
-                         }
-                     }
                 });
-    
-                if (found != true) {
-                    // console.log('not found');
-                    Player.find({ id: req.params.id}, function(err, foundPlayer) {
-                        foundPlayer[0].usersFavorited.push(req.user._id);
-                        // foundPlayer[0].save();  
-                        foundPlayer[0].comments.push(req.body);
-                             foundPlayer[0].save(function(err) {
-                                 res.redirect(`/players/${req.params.id}`)
-                             })
-                    })
-                    
-                }
             } 
         })
 
