@@ -40,11 +40,13 @@ function show (req, res) {
     let playerAvg;
     let playerData;
 
+    
+    
     request(
-        `${rootURL}/players/${req.params.id}`, function(err, response, body) {
+        `${rootURL}/players/${req.params.id}`, async function(err, response, body) {
             playerProfile = JSON.parse(body);
             // console.log(playerProfile);
-            
+            let dbPlayer = await Player.find({id: req.params.id});
             request(
                 `${rootURL}/season_averages?season2021&player_ids[]=${req.params.id}`, function(err, response, body) {
                     playerAvg = JSON.parse(body);
@@ -54,11 +56,8 @@ function show (req, res) {
                         console.log('No data')
                         res.render(`players/oldPlayer`,  { title: `${playerProfile.first_name} ${playerProfile.last_name}`, profile: playerProfile })
                     } else {
-                        console.log(body);
 
-                    // console.log(playerAvg.data);
-                    console.log(playerData);
-                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile });
+                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile, db: dbPlayer });
 
                     }
                 }
@@ -68,7 +67,7 @@ function show (req, res) {
 }
 
 function addToFavorites(req, res) {
-    console.log(req.params.id);
+    // console.log(req.params.id);
     let found;
     let playerId = parseInt(req.params.id);
 
@@ -102,7 +101,7 @@ function addToFavorites(req, res) {
                 // player.create creates the player in DB
                     Player.create(playerData, function(err, createdPlayer) {
                         // console.log(`player data: ${playerData}`,);
-                        console.log(`createdPlayer: ${createdPlayer.usersFavorited}`)
+                        // console.log(`createdPlayer: ${createdPlayer.usersFavorited}`)
                         createdPlayer.usersFavorited.push(req.user._id);
                         createdPlayer.save();
                         })
@@ -111,11 +110,11 @@ function addToFavorites(req, res) {
         } else { 
             // looks for player in DB, if user is already added to player.userFavorites, skip
             await Player.find({ id: req.params.id}, function(err, foundPlayer) {
-                 console.log(foundPlayer[0].usersFavorited);
+                //  console.log(foundPlayer[0].usersFavorited);
                  for(let i = 0; i < foundPlayer[0].usersFavorited.length; i++) {
                      if(parseInt(req.user._id) == parseInt(foundPlayer[0].usersFavorited[i])){
                          found = true;
-                         console.log('player already added');
+                        //  console.log('player already added');
                      }
                  }
             });

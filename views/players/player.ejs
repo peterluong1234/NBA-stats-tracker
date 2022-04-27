@@ -45,7 +45,18 @@
         </table>
     </div>
     </div>
+    <br><br><h2>Comments</h2>
+    <form id="add-comment-form" method="POST"
+      action="/players/<%= profile.id %>/comments">
+      <div class="form-group">
+      <label>Add Comment:</label>
+      <textarea class="form-control" rows="3" name="content"></textarea>
+      <button type="submit" class="btn btn-primary" value="Add Comment">Add Comment</button>
     </div>
+    </form>
+    </div>
+
+
 
 
 <%- include('../partials/footer') %>
