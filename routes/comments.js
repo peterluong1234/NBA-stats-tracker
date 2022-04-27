@@ -7,6 +7,7 @@ const playersCtrl = require('../controllers/players');
 
 // router.get('/', playersCtrl.index);
 router.post('/players/:id/comments', commentsCtrl.create);
-
+router.delete('/comments/:id', commentsCtrl.delete )
+router.put('/comments/:id', commentsCtrl.update)
 
 module.exports = router;

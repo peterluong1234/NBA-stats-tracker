@@ -58,6 +58,7 @@
     <div class="row mt-3">
         <% if(db != undefined) {%>
             <% db.comments.forEach(comment=> { %>
+                <div class="col-8">
                     <div class="d-flex">
                         <div class="flex-shrink-0">
                             <img style="height: 50px" class="mr-3 mh-100" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
@@ -67,7 +68,18 @@
                             <%= comment.content %>
                         </div>
                     </div>
-                
+                </div>
+                <% if (user) { %>
+                <% if    (user._id == userid) { %>
+                    <div class="col">
+                        <form action="" method="POST">
+                            <button>EDIT</button>
+                        </form>
+                        <form action="" method="POST">
+                            <button>X</button>  
+                        </form> 
+                    </div>
+                <% }} %>
             <% }) %>
         <% } %>
         </div>

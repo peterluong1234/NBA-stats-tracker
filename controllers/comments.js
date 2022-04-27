@@ -37,7 +37,6 @@ function create(req, res) {
                             comments: commentBody   })
                         await res.redirect(`/players/${req.params.id}`)                            
             })
-   
     
             } else { 
                 await Player.find({ id: req.params.id}, function(err, foundPlayer) {
@@ -52,10 +51,19 @@ function create(req, res) {
                 });
             } 
         })
+}
 
+function deleteComment(req, res) {
+
+}
+
+function update(req, res) {
 
 }
 
 module.exports = {
-    create
+    create,
+    delete: deleteComment,
+    update
+
 };

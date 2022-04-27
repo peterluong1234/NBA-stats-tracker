@@ -63,7 +63,7 @@ function show (req, res) {
                         console.log('No data')
                         res.render(`players/oldPlayer`,  { title: `${playerProfile.first_name} ${playerProfile.last_name}`, profile: playerProfile })
                     } else {
-                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile, db: dbPlayer[0], user: userid });
+                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile, db: dbPlayer[0], userid: userid });
 
                     }
                 }
