@@ -44,32 +44,36 @@
             </tbody>
         </table>
     </div>
+    <div class="row">
+        <br><br><h2>Comments</h2>
+        <form id="add-comment-form" method="POST"
+          action="/players/<%= profile.id %>/comments">
+          <div class="form-group">
+          <label>Add Comment:</label>
+          <textarea class="form-control" rows="3" name="content"></textarea>
+          <button type="submit" class="btn btn-primary" value="Add Comment">Add Comment</button>
+        </div>
+        </form>
     </div>
-    <br><br><h2>Comments</h2>
-    <form id="add-comment-form" method="POST"
-      action="/players/<%= profile.id %>/comments">
-      <div class="form-group">
-      <label>Add Comment:</label>
-      <textarea class="form-control" rows="3" name="content"></textarea>
-      <button type="submit" class="btn btn-primary" value="Add Comment">Add Comment</button>
-    </div>
-    </form>
-
-    <% if(db != undefined) {%>
-        <ul class="list-unstyled">
-        <% db.comments.forEach(comment=> { %>
-            
-                <li class="media">
-                    <div class="media-body">
-                        <h5 class="mt-1 mb-1">Comment</h5>
-                        <%= comment.content %>
+    <div class="row mt-3">
+        <% if(db != undefined) {%>
+            <% db.comments.forEach(comment=> { %>
+                    <div class="d-flex">
+                        <div class="flex-shrink-0">
+                            <img style="height: 50px" class="mr-3 mh-100" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="mt-1 mb-1"><%= comment.name%></h5>
+                            <%= comment.content %>
+                        </div>
                     </div>
-                </li>
-            
-        <% }) %>
-    </ul>
-    <% } %>
+                
+            <% }) %>
+        <% } %>
+        </div>
     </div>
+    </div>
+    
 
     
 <%- include('../partials/footer') %>
