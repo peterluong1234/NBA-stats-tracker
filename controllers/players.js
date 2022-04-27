@@ -52,12 +52,18 @@ function show (req, res) {
                     playerAvg = JSON.parse(body);
                     playerData = playerAvg.data[0];
 
-         
+                    let userid;
+                    if (req.user) {
+                        userid = req.user._id
+                    } else {
+                        userid = 0;
+                    }
+                    console.log(userid)
                     if(playerAvg.data.length == 0) {
                         console.log('No data')
                         res.render(`players/oldPlayer`,  { title: `${playerProfile.first_name} ${playerProfile.last_name}`, profile: playerProfile })
                     } else {
-                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile, db: dbPlayer[0] });
+                    res.render(`players/player`, { title: `${playerProfile.first_name} ${playerProfile.last_name}`, stats: playerData, profile: playerProfile, db: dbPlayer[0], user: userid });
 
                     }
                 }
