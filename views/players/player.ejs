@@ -72,11 +72,11 @@
                 <% if (user) { %>
                 <% if    (user._id == userid) { %>
                     <div class="col">
-                        <form action="" method="POST">
-                            <button>EDIT</button>
+                        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                            <button type="submit">EDIT</button>
                         </form>
-                        <form action="" method="POST">
-                            <button>X</button>  
+                        <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                            <button type="submit">X</button>  
                         </form> 
                     </div>
                 <% }} %>
