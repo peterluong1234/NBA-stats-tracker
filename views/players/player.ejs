@@ -58,28 +58,39 @@
     <div class="row mt-3">
         <% if(db != undefined) {%>
             <% db.comments.forEach(comment=> { %>
-                <div class="col-8">
-                    <div class="d-flex">
-                        <div class="flex-shrink-0">
-                            <img style="height: 50px" class="mr-3 mh-100" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h5 class="mt-1 mb-1"><%= comment.name%></h5>
-                            <%= comment.content %>
-                        </div>
-                    </div>
-                </div>
                 <% if (user) { %>
-                <% if    (user._id == userid) { %>
-                    <div class="col">
-                        <form action="/comments/<%= comment._id %>" method="GET">
-                            <button type="submit">EDIT</button>
-                        </form>
-                        <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                            <button type="submit">X</button>  
-                        </form> 
+                <% if (user._id == userid) { %>
+                    <div class="col-8">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <img style="height: 50px" class="mr-3 mh-100" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="mt-1 mb-1"><%= comment.name%></h5>
+                                <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                                    <!-- Value attribute is being set to the comment's current text -->
+                                    <input name="text" value="<%= comment.content %>">
+                                    <button type="submit">UPDATE COMMENT</button>
+                                  </form>
+                                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                    <button type="submit">X</button>  
+                                </form> 
+                            </div>
+                        </div>
                     </div>
-                <% }} %>
+                <% }} else { %>
+                    <div class="col-8">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <img style="height: 50px" class="mr-3 mh-100" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="mt-1 mb-1"><%= comment.name%></h5>
+                                <%= comment.content %>
+                            </div>
+                        </div>
+                    </div>
+                 <% } %>
             <% }) %>
         <% } %>
         </div>

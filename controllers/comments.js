@@ -54,15 +54,28 @@ function create(req, res) {
 }
 
 function deleteComment(req, res) {
-
+    Player.findOne({'coments._id': req.params.id}, function(err, player) {
+        const commentSubdoc = player.comments.id(req.params.id);
+        commentSubdoc.remove();
+        player.save(function(err) {
+            res.redirect(`/players/${player.id}`)
+        })
+    })
 }
 
 function update(req, res) {
-
+    Player.findOne({'comments._id': req.params.id}, function(err, player) {
+        const commentSubdoc = player.comments.id(req.params.id);
+        commentSubdoc.content = req.body.text;
+        
+        player.save(function(err) {
+            res.redirect(`/players/${player.id}`)
+        })
+    })
 }
 
 function show(req, res) {
-    console.log('it works!')
+    res.render(`show/${req.params.id}`);
 }
 
 module.exports = {
