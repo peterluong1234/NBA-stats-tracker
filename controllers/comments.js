@@ -54,7 +54,7 @@ function create(req, res) {
 }
 
 function deleteComment(req, res) {
-    Player.findOne({'coments._id': req.params.id}, function(err, player) {
+    Player.findOne({'comments._id': req.params.id}, function(err, player) {
         const commentSubdoc = player.comments.id(req.params.id);
         commentSubdoc.remove();
         player.save(function(err) {

@@ -67,15 +67,17 @@
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5 class="mt-1 mb-1"><%= comment.name%></h5>
-                                <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
-                                    <!-- Value attribute is being set to the comment's current text -->
-                                    <input name="text" value="<%= comment.content %>">
-                                    <button type="submit">UPDATE COMMENT</button>
-                                  </form>
-                                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                    <button type="submit">X</button>  
-                                </form> 
-                            </div>
+                                    <div class="mb-3">
+                                        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                                            <!-- Value attribute is being set to the comment's current text -->
+                                            <input name="text" class="form-control" value="<%= comment.content %>">
+                                            <button type="submit">UPDATE COMMENT</button>
+                                        </form>
+                                        <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                            <button type="submit">X</button>  
+                                        </form> 
+                                    </div>
+                            </div>  
                         </div>
                     </div>
                 <% }} else { %>
