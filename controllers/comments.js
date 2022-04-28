@@ -61,9 +61,13 @@ function update(req, res) {
 
 }
 
+function show(req, res) {
+    console.log('it works!')
+}
+
 module.exports = {
     create,
     delete: deleteComment,
-    update
-
+    update,
+    show
 };

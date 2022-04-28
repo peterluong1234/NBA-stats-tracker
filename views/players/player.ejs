@@ -72,7 +72,7 @@
                 <% if (user) { %>
                 <% if    (user._id == userid) { %>
                     <div class="col">
-                        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                        <form action="/comments/<%= comment._id %>" method="GET">
                             <button type="submit">EDIT</button>
                         </form>
                         <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
@@ -84,8 +84,7 @@
         <% } %>
         </div>
     </div>
-    </div>
+</div>
     
-
     
 <%- include('../partials/footer') %>
